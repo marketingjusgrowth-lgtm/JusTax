@@ -1,0 +1,31 @@
+# Configuração da automação de posts
+# Alterar aqui ajusta o comportamento sem precisar editar os prompts.
+
+cadencia:
+  dia: segunda
+  hora_local: "08:00"
+  timezone: America/Sao_Paulo
+
+volume:
+  posts_por_semana: 3
+  temas_pesquisados: 7      # pesquisa mais do que vai postar, para dar escolha
+  temas_sugeridos: 5        # na entrega semanal, apresenta top 5 para o advogado escolher 3
+
+formatos:
+  - carrossel
+  - feed_single
+
+publicacao:
+  modo: manual              # alternativas futuras: buffer, instagram_graph_api
+  entrega:
+    - sessao_claude
+    - email                 # pendente de confirmação do endereço
+
+aprovacoes:
+  - etapa: curadoria_semanal
+    obrigatoria: true
+  - etapa: posts_prontos
+    obrigatoria: true
+
+historico:
+  manter_por_dias: 180      # evitar repetir temas publicados nos últimos 6 meses
