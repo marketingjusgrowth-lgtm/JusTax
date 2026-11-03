@@ -1,126 +1,225 @@
 # Briefing visual dos posts — Dilnei Borges Advocacia
 
-Identidade visual calibrada a partir do perfil atual do Instagram.
-Mantém o padrão já estabelecido pelo escritório.
-
-## Lógica do feed (grid 3 colunas)
-
-O feed é organizado em **grid com dois estilos alternados por coluna**:
-
-- **Coluna esquerda (1/3 dos posts)**: posts com **fundo verde escuro**
-- **Colunas meio + direita (2/3 dos posts)**: posts com **fundo bege**
-
-> **Importante**: a cor é escolha **estética** (para manter a aparência
-> organizada do grid), **não semântica**. Os posts verdes NÃO precisam
-> ser institucionais — podem ser conteúdo jurídico normal, só com um
-> tratamento visual mais impactante (frase forte, pergunta provocativa,
-> dado que gera curiosidade).
-
-Como a automação produz **3 posts por semana**, a distribuição é:
-
-- **1 post verde** por semana — formato "impacto": pergunta provocativa,
-  dado forte, frase-gancho, call to action — qualquer conteúdo que
-  funcione bem com fundo escuro e tipografia grande centralizada
-- **2 posts bege** por semana — formato "análise": explicação do que
-  mudou, passo-a-passo, "como se proteger", análise de decisão
-
-A escolha de qual tema do conteúdo da semana vira verde e quais viram
-bege é feita após o advogado aprovar os 3 temas da curadoria.
-
----
-
-## Paleta — posts BEGE (conteúdo jurídico)
-
-### Cores
-- **Fundo**: bege cremoso quente `#EDE4D1` (aproximação — ajustar quando
-  tiver o hex exato do design original)
-- **Texto principal (títulos)**: preto profundo `#1A1A1A`
-- **Texto secundário**: cinza-escuro `#4A4A4A`
-- **Palavra-chave em destaque (itálico)**: mesmo preto, só em itálico
-  serifado — ex.: *desigual*, *recibo*, *estratégia*
-- **Logo/wordmark**: dourado-ocre discreto `#B8894A` (do "D ADVOCACIA")
-
-### Tipografia
-- **Títulos**: serifada clássica tipo "Playfair Display" ou "Lora"
-  — tamanho generoso, peso regular
-- **Palavras-chave**: mesma serifada em itálico
-- **Rodapé/caption** (ex.: "STJ decidiu. E agora?"): sans-serif pequena,
-  cinza-médio
-
-### Composição
-- Título grande ocupando metade superior do slide
-- Palavra-chave em itálico embutida no título (ex.: "A herança pode ser
-  dividida de forma *desigual*.")
-- Linha divisória fina horizontal no meio
-- Imagem fotográfica realista na metade inferior (balança de justiça,
-  imóvel, documentos, mãos trabalhando — contexto do tema)
-- Logo "D ADVOCACIA" discreto no canto superior esquerdo, OAB/SC 23.954
-  no canto superior direito
-
----
-
-## Paleta — posts VERDES (conteúdo de impacto)
-
-### Cores
-- **Fundo**: verde escuro profundo `#0F2A1F` (verde-musgo, quase preto)
-- **Texto principal**: creme/off-white `#F0E8D4`
-- **Dourado para destaques**: `#C9A961`
-- **Linha divisória**: dourado fino
-
-### Tipografia
-- **Título / frase-gancho**: serifada grande, pode ser centralizada
-- **Subtítulo ou destaque**: serifada itálico em dourado
-- **Rodapé/caption**: sans-serif pequena em creme
-
-### Composição
-- Logo "D ADVOCACIA" discreto no topo + OAB/SC 23.954 do outro lado
-- Frase forte / pergunta / dado de impacto ocupa o centro (metade superior)
-- Elemento visual sutil embaixo: filete dourado, ou um ícone/foto pequena
-  tratada em overlay verde (não quebrar a sobriedade escura)
-- Para carrossel verde: capa com a frase-gancho, slides seguintes podem
-  misturar fundos verde e bege ao longo da sequência, voltando ao verde
-  no último slide (CTA)
+Identidade visual **extraída diretamente** do design-doc do escritório
+(`Instagram+Advocacia+Dilnei+Borges.dc.html` do Claude Design).
+Este arquivo é fonte da verdade para toda arte produzida pela automação.
 
 ---
 
 ## Formato técnico
 
-- **Resolução**: 1080x1350 (vertical 4:5 — padrão atual do perfil)
-- **Carrossel**: até 8 slides, mantendo mesma identidade em todos
-- **Feed single**: 1 imagem com título forte + palavra-chave em itálico
+- **Resolução**: 1080 × 1350 (vertical 4:5) — carrossel e feed
+- **Variação de post único "quadrado"**: ainda assim 1080 × 1350 — manter
+  consistência de proporção no feed
+
+---
+
+## Lógica das colunas no grid
+
+- **Coluna esquerda (1/3 dos posts)**: fundo verde escuro `#0A3A2A`
+- **Colunas meio + direita (2/3 dos posts)**: fundo bege `#EFE6D3`
+
+A cor é escolha **estética** para manter o grid organizado — não semântica.
+Qualquer conteúdo pode virar verde ou bege; a decisão fina acontece quando
+distribuir os temas aprovados no cronograma semanal.
+
+Distribuição semanal: **1 verde + 2 bege**.
+
+---
+
+## Tipografia (confirmada no design-doc)
+
+- **Títulos e nome do escritório**: `'Cormorant Garamond', serif`
+  - Pesos usados: 400, 500, 600 — regular e italic
+  - Palavras-chave sempre em **italic** com cor contrastante
+- **Captions, eyebrows, footer**: `'Jost', sans-serif`
+  - Peso 300 (light) para corpo, 400 para labels
+  - Letter-spacing generoso (0.2em até 0.44em) nos eyebrows
+
+Via Google Fonts:
+```
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500&display=swap">
+```
+
+---
+
+## Paleta completa (hex codes do design-doc)
+
+### Verdes (fundos e profundidade)
+| Cor | Uso |
+|---|---|
+| `#0A3A2A` | **verde principal** (fundo brand) |
+| `#14563E` | highlight do gradiente radial |
+| `#051D14` | fim do gradiente (profundidade) |
+| `#062418` · `#04150E` | verdes mais profundos |
+| `#0E4632` · `#12503A` | verdes médios |
+
+### Dourados (tipografia e detalhes)
+| Cor | Uso |
+|---|---|
+| `#C9A24B` | **dourado principal** — filetes, OAB, logo |
+| `#9C7A33` | dourado dessaturado — eyebrows, "Dilnei Borges" sobre bege |
+| `#E4C77E` | dourado claro — italic sobre verde, selos |
+| `#E9D6A2` | dourado creme — chip identificador |
+| `#8A6E2E` | dourado terroso — italic sobre bege |
+| `#EBD79B` | dourado médio claro |
+
+### Cremes / Beges (fundo claro e texto sobre verde)
+| Cor | Uso |
+|---|---|
+| `#F1EBDD` | **creme principal** — texto sobre verde |
+| `#EFE6D3` | **bege de fundo** |
+| `#FBF6EA` | ponto mais claro do gradiente radial |
+| `#E2D6BC` | fim do gradiente radial |
+| `#F7F1E4` · `#F3EFE6` | variações |
+
+### Verde-cinza (sage, texto secundário)
+| Cor | Uso |
+|---|---|
+| `#CFDBD3` | sage claro — caption sobre verde |
+| `#9FB3A8` | sage médio — footer sobre verde |
+| `#8FA396` | sage escuro — áreas |
+| `#4A5A52` · `#6B7A70` | cinzas esverdeados — texto sobre bege |
+| `#3B4A42` | mais escuro — subtítulo |
+
+### Variação "Preto profundo" (3ª cor pontual)
+| Cor | Uso |
+|---|---|
+| `#0C0C0B` · `#060706` | pretos neutros |
+| `#121513` · `#1D231F` | pretos esverdeados |
+
+---
+
+## Elementos recorrentes de composição
+
+### 1. Fundo com gradiente radial
+```css
+/* Bege */
+background: radial-gradient(95% 75% at 22% 14%,
+  #FBF6EA 0%, #EFE6D3 52%, #E2D6BC 100%);
+
+/* Verde */
+background: radial-gradient(95% 75% at 22% 14%,
+  #14563E 0%, #0A3A2A 50%, #051D14 100%);
+```
+
+### 2. Textura diagonal sutil (overlay)
+```css
+opacity: .14 a .30;
+background: repeating-linear-gradient(115deg,
+  rgba(COR, .5) 0px, rgba(COR, .5) 1px,
+  transparent 1px, transparent 28px);
+```
+Sobre bege use `rgba(156,122,51,.22)` (dourado terroso).
+Sobre verde use `rgba(233,214,162,.5)` (dourado creme).
+
+### 3. Borda interna respirando
+```css
+position: absolute;
+inset: 50px;
+border: 1px solid rgba(201, 162, 75, .34);
+```
+Enquadra o conteúdo com um filete dourado 34% opaco.
+
+### 4. Logo + wordmark (canto superior esquerdo)
+```
+[DB_LOGO 56-74px]  Dilnei Borges       ← Cormorant Garamond 24-26px, letter-spacing .06em
+                   ━━━━━━━━━━━━         ← linha gradiente dourada
+                   ADVOCACIA            ← Cormorant Garamond 22-31px, letter-spacing .34em
+```
+
+A linha divisória:
+```css
+background: linear-gradient(90deg,
+  rgba(201,162,75,0), #C9A24B, rgba(201,162,75,0));
+```
+
+### 5. Marca-d'água do logo DB
+Imagem do DB em opacidade `.09` a `.10`, posicionada à direita, dando
+textura visual de fundo sem concorrer com o conteúdo.
+
+### 6. OAB/SC
+No footer, em caixa alta, letter-spacing aberto. **PENDENTE: confirmar número**
+— o screenshot do perfil mostra 23.954, mas o design-doc tem 25.954. Perguntar
+ao advogado qual é o correto.
+
+---
+
+## Formatos catalogados no design-doc
+
+O escritório tem 5 formatos nomeados. A automação deve escolher UM por post
+conforme o tipo de conteúdo:
+
+### Formato A — "Manchete da decisão" (uso recomendado: notícias de STF/STJ)
+- Eyebrow: "DIREITO EM PAUTA" em Jost dourado
+- Título hero: nome do órgão + ação ("STJ decidiu.") em Cormorant uppercase 150px
+- Subtítulo em italic: pergunta provocativa ("E agora?") em dourado claro 132px
+- Linha dourada curta como separador
+- Caption breve embaixo em Jost light 28px
+- Footer: área · OAB
+
+### Formato B — "Pergunta com foto" (uso recomendado: temas com apelo visual)
+- Pergunta como título em Cormorant médio
+- Palavra-chave em italic contrastante
+- Foto fotográfica realista ocupando metade inferior
+- Caption breve
+
+### Formato C — "Lista / passo-a-passo" (uso recomendado: "o que fazer")
+- Título mais contido
+- Lista de itens com marcadores dourados
+- Caption de contexto
+
+### Formato D — "Dado em destaque" (uso recomendado: números-chave da notícia)
+- Grande número ou valor centralizado em Cormorant
+- Contexto curto embaixo
+
+### Formato E — "Manifesto / frase-conceito" (uso recomendado: posts
+institucionais verdes)
+- Frase longa ocupando o slide inteiro
+- Última palavra em italic dourado como "mic drop"
+- Ex.: "O Direito exige mais do que respostas. *Exige estratégia.*"
 
 ---
 
 ## Elementos obrigatórios em TODO post
 
-- Logo **"D"** + "ADVOCACIA" no cabeçalho (discreto)
-- **OAB/SC 23.954** no cabeçalho (fonte da fonte lado direito)
-- No slide final: **@dilneiborgesadvocacia** (ou o @ real do perfil —
-  confirmar com advogado)
-- No slide final: **disclaimer** em corpo pequeno:
-  "Este conteúdo é informativo. Para o seu caso específico, consulte um advogado."
+- Logo DB + "Dilnei Borges" + "ADVOCACIA" (canto superior esquerdo)
+- OAB/SC [número] no footer
+- Último slide (CTA, quando carrossel):
+  - "Fale com o escritório"
+  - @ do Instagram (confirmar o handle oficial)
+  - Disclaimer: "Conteúdo informativo. Para o seu caso específico, consulte um advogado."
 
 ---
 
-## O que NÃO fazer (manter o padrão sóbrio do escritório)
+## O que a automação NUNCA deve fazer
 
-- Emojis em excesso no design (pode moderadamente na legenda)
-- Cores saturadas tipo marketing agressivo (vermelho, laranja berrante)
-- Fontes manuscritas / "scripts" cursivas
-- Imagens de banco com advogados sorridentes genéricos
-- Martelo de juiz, balança da justiça em close-up clichê — se usar
-  simbolismo jurídico, discreto e em contexto (balança como peça do
-  ambiente, não como herói da imagem)
-- Nunca usar o verde escuro no post de conteúdo — essa cor pertence
-  exclusivamente aos posts institucionais
+- Usar fonte diferente de Cormorant Garamond para títulos
+- Usar fonte diferente de Jost para captions/sans
+- Trocar as cores oficiais por "aproximadas"
+- Omitir a borda interna, o gradiente radial ou a textura diagonal — os três
+  juntos definem a textura visual da marca
+- Usar emojis no design (podem na legenda, moderadamente)
+- Posicionar o logo em outro lugar que não o canto superior esquerdo
+- Omitir a palavra-chave em italic no título
 
 ---
 
-## Pendências de calibragem fina
+## Como a automação opera dentro desta identidade
 
-- [ ] Hex codes exatos (verde, bege, dourado) — advogado pode conferir
-      no arquivo original do Canva/Figma
-- [ ] Nome exato da fonte usada nos títulos
-- [ ] Logo em alta resolução (PNG/SVG) para incorporar nos designs
-      gerados pelo Claude Artifact
-- [ ] @ oficial do Instagram do escritório
+O trabalho da automação **NÃO é refazer o design do zero**. Ela:
+
+1. Entrega o **texto editorial** estruturado por slide (título, palavra-chave
+   em italic, caption, footer line) no formato do briefing acima
+2. Produz um **preview visual** (artifact HTML) que simula fielmente o
+   padrão real, para o advogado conferir que o conteúdo encaixa no template
+3. O advogado **aplica o conteúdo no template real** dele no Claude Design
+   (que já tem as 5 artboards de formato prontas) e exporta como PNG
+4. Publica no Instagram manualmente
+
+Fluxo:
+```
+Pesquisa semanal → Curadoria → Aprovação temas →
+Texto por slide + Preview artifact → Aprovação textos →
+Advogado cola no template Claude Design → Exporta PNG → Posta
+```
