@@ -5,10 +5,12 @@
 
 ## O escritório
 
+- **Nome**: Dilnei Borges Advocacia
+- **OAB**: SC 23.954
 - **Natureza**: escritório de advocacia (atuação multidisciplinar, sem nicho único)
 - **Áreas de maior rotatividade atual**: Civil, Tributário, Imobiliário, Ambiental
-- **Outras áreas atendidas**: Empresarial / Societário, Consumidor
-- **Jurisdição**: Brasil (foco em legislação federal e decisões STF/STJ; TJs quando relevante)
+- **Outras áreas atendidas**: Empresarial / Societário, Consumidor, Sucessões
+- **Jurisdição**: Brasil (foco em legislação federal e decisões STF/STJ; TJs quando relevante — TJSC em destaque)
 
 ## Público-alvo dos posts
 
@@ -57,5 +59,5 @@ Um tema entra na curadoria semanal se:
 
 ## E-mail de entrega
 
-**[PENDENTE]** — advogado vai informar o e-mail do escritório para envio da
-curadoria semanal.
+- **Destinatário da curadoria semanal**: gustavorafael.adv@gmail.com
+- **Modo adicional**: também entregar na sessão do Claude
