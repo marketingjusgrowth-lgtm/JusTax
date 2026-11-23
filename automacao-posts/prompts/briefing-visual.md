@@ -121,22 +121,24 @@ border: 1px solid rgba(201, 162, 75, .34);
 ```
 Enquadra o conteúdo com um filete dourado 34% opaco.
 
-### 4. Logo + wordmark (canto superior esquerdo)
-```
-[DB_LOGO 56-74px]  Dilnei Borges       ← Cormorant Garamond 24-26px, letter-spacing .06em
-                   ━━━━━━━━━━━━         ← linha gradiente dourada
-                   ADVOCACIA            ← Cormorant Garamond 22-31px, letter-spacing .34em
-```
+### 4. Logo oficial do escritório
+A logo completa é composta por:
+- **Monograma**: letra "D" dourada com gradiente, com uma **coluna grega**
+  verde embutida no vão da letra (referência clássica ao Direito)
+- **ADVOCACIA**: Cormorant Garamond em caixa alta, letter-spacing ~0.34em,
+  cor creme sobre fundo verde ou dourado-mel sobre fundo claro
+- **Linha divisória fina dourada** com extremidades em fade
+- **Dilnei Borges**: Cormorant Garamond, caixa normal, menor que ADVOCACIA
 
-A linha divisória:
-```css
-background: linear-gradient(90deg,
-  rgba(201,162,75,0), #C9A24B, rgba(201,162,75,0));
-```
+A logo é um asset fixo — está salva em `automacao-posts/assets/`:
+- `logo-fundo-claro.webp` — versão para fundo bege/off-white
+- `logo-fundo-verde.webp` — versão para fundo verde escuro
+- `logo-transparente.png` — versão para outros fundos
 
-### 5. Marca-d'água do logo DB
-Imagem do DB em opacidade `.09` a `.10`, posicionada à direita, dando
-textura visual de fundo sem concorrer com o conteúdo.
+Posicionamento nos slides: canto superior esquerdo do conteúdo,
+largura ~20% da artboard.
+
+### 5. (removido) — a logo oficial já tem presença suficiente, sem precisar de marca-d'água adicional.
 
 ### 6. OAB/SC
 No footer, em caixa alta, letter-spacing aberto. **PENDENTE: confirmar número**

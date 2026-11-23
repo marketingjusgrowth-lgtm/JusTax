@@ -1,0 +1,957 @@
+<title>Posts 03/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --page-bg: #F4EFE2;
+    --page-fg: #0A3A2A;
+    --muted: #6B7A70;
+    --rule: rgba(10,58,42,.14);
+    --verde: #0A3A2A;
+    --verde-claro: #14563E;
+    --verde-escuro: #051D14;
+    --bege: #EFE6D3;
+    --bege-claro: #FBF6EA;
+    --bege-escuro: #E2D6BC;
+    --creme: #F1EBDD;
+    --dourado: #C9A24B;
+    --dourado-escuro: #9C7A33;
+    --dourado-claro: #E4C77E;
+    --dourado-mel: #8A6E2E;
+    --dourado-creme: #E9D6A2;
+    --sage: #9FB3A8;
+    --sage-claro: #CFDBD3;
+    --sage-escuro: #3B4A42;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #0E1A14;
+      --page-fg: #F1EBDD;
+      --muted: #9FB3A8;
+      --rule: rgba(241,235,221,.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #0E1A14;
+    --page-fg: #F1EBDD;
+    --muted: #9FB3A8;
+    --rule: rgba(241,235,221,.14);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font-family: "Jost", system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.55;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 56px 80px;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .masthead { padding-bottom: 36px; border-bottom: 1px solid var(--rule); margin-bottom: 44px; }
+  .eyebrow {
+    font-family: "Jost";
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+    font-weight: 500;
+  }
+  .masthead h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5.5vw, 54px);
+    line-height: 1.04;
+    letter-spacing: -0.005em;
+    margin: 14px 0 0;
+    text-wrap: balance;
+    color: var(--page-fg);
+  }
+  .masthead h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--dourado-mel);
+  }
+  .masthead .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 32px;
+    font-family: "Jost";
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 22px;
+    font-weight: 400;
+  }
+  .masthead .meta b { color: var(--page-fg); font-weight: 500; }
+
+  .post { margin-bottom: 60px; }
+  .post-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .post-num {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--dourado-mel);
+    letter-spacing: 0.02em;
+  }
+  .post-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    flex: 1 1 260px;
+    min-width: 0;
+    letter-spacing: -0.005em;
+  }
+  .post-meta-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 5px 11px;
+    color: var(--dourado-escuro);
+    background: transparent;
+    border: 1px solid var(--rule);
+  }
+  .chip.verde { background: var(--verde); color: var(--dourado-creme); border-color: var(--verde); }
+  .chip.bege { background: var(--bege); color: var(--verde); border-color: var(--bege); }
+
+  .slides {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 760px) { .slides { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .slides { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; } }
+  .single-slide { display: grid; place-items: center; margin-bottom: 32px; }
+  .single-slide .slide-wrap { max-width: 440px; width: 100%; }
+
+  .slide {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    font-family: "Cormorant Garamond", serif;
+    color: var(--verde);
+    container-type: inline-size;
+    box-shadow: 0 2px 12px rgba(10,58,42,.08);
+  }
+  .slide.bege { background: var(--bege); }
+  .slide.verde { background: var(--verde); color: var(--creme); }
+
+  .slide .layer-gradient { position: absolute; inset: 0; z-index: 0; }
+  .slide.bege .layer-gradient {
+    background: radial-gradient(95% 75% at 22% 14%, var(--bege-claro) 0%, var(--bege) 52%, var(--bege-escuro) 100%);
+  }
+  .slide.verde .layer-gradient {
+    background: radial-gradient(95% 75% at 22% 14%, var(--verde-claro) 0%, var(--verde) 50%, var(--verde-escuro) 100%);
+  }
+
+  .slide .layer-texture { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .slide.bege .layer-texture {
+    opacity: 0.3;
+    background: repeating-linear-gradient(115deg, rgba(156,122,51,.22) 0px, rgba(156,122,51,.22) 1px, transparent 1px, transparent 28px);
+  }
+  .slide.verde .layer-texture {
+    opacity: 0.16;
+    background: repeating-linear-gradient(115deg, rgba(233,214,162,.5) 0px, rgba(233,214,162,.5) 1px, transparent 1px, transparent 28px);
+  }
+
+  .slide .layer-border {
+    position: absolute; inset: 4.6%; z-index: 2; pointer-events: none;
+    border: 1px solid rgba(201,162,75,.34);
+  }
+
+  .slide .content {
+    position: absolute; inset: 9.3%; z-index: 3;
+    display: flex; flex-direction: column;
+  }
+
+  /* -------- Logo oficial (canto superior esquerdo) -------- */
+  .logo-area {
+    width: 20cqw;
+    aspect-ratio: 5 / 4;
+    display: block;
+    position: relative;
+  }
+  .logo-area img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .slide.bege .logo-area .logo-dark { display: none; }
+  .slide.verde .logo-area .logo-light { display: none; }
+
+  /* -------- Hero area (Formato A — manchete) -------- */
+  .hero-A { margin-top: 18cqw; display: flex; flex-direction: column; gap: 2.4cqw; }
+  .hero-eyebrow {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 1.7cqw;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: var(--dourado);
+  }
+  .slide.bege .hero-eyebrow { color: var(--dourado-mel); }
+  .hero-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 13.5cqw;
+    line-height: 0.98;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .hero-sub-italic {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 12cqw;
+    line-height: 1;
+    margin: 0;
+  }
+  .slide.bege .hero-title { color: var(--verde); }
+  .slide.bege .hero-sub-italic { color: var(--dourado-mel); }
+  .slide.verde .hero-title { color: var(--creme); }
+  .slide.verde .hero-sub-italic { color: var(--dourado-claro); }
+
+  .hero-separator {
+    width: 18%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--dourado-claro), rgba(228,199,126,0));
+    margin-top: 1cqw;
+  }
+  .slide.bege .hero-separator {
+    background: var(--dourado-escuro);
+    opacity: 0.9;
+  }
+
+  .caption {
+    margin-top: auto;
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 2.7cqw;
+    line-height: 1.42;
+    text-wrap: pretty;
+    max-width: 95%;
+  }
+  .slide.bege .caption { color: var(--sage-escuro); }
+  .slide.verde .caption { color: var(--sage-claro); }
+
+  .footer {
+    margin-top: 2.4cqw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 1.6cqw;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .slide.bege .footer { color: var(--sage-escuro); }
+  .slide.bege .footer .oab { color: var(--dourado-mel); }
+  .slide.verde .footer { color: var(--sage); }
+  .slide.verde .footer .oab { color: var(--dourado-claro); }
+
+  .body-A { margin-top: 6cqw; display: flex; flex-direction: column; gap: 2.5cqw; }
+  .body-eyebrow {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 1.7cqw;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+  }
+  .slide.verde .body-eyebrow { color: var(--dourado-claro); }
+  .body-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 6.4cqw;
+    line-height: 1.08;
+    letter-spacing: -0.005em;
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .body-title em {
+    font-style: italic;
+    font-weight: 500;
+  }
+  .slide.bege .body-title { color: var(--verde); }
+  .slide.bege .body-title em { color: var(--dourado-mel); }
+  .slide.verde .body-title { color: var(--creme); }
+  .slide.verde .body-title em { color: var(--dourado-claro); }
+
+  .body-list { list-style: none; padding: 0; margin: 1.4cqw 0 0; display: flex; flex-direction: column; gap: 2cqw; }
+  .body-list li {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 4.4cqw;
+    line-height: 1.2;
+    padding-left: 4cqw;
+    position: relative;
+    text-wrap: pretty;
+  }
+  .body-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.56em;
+    width: 2.4cqw;
+    height: 1px;
+    background: var(--dourado);
+  }
+  .slide.bege .body-list li { color: var(--verde); }
+  .slide.verde .body-list li { color: var(--creme); }
+  .slide.verde .body-list li::before { background: var(--dourado-claro); }
+
+  .body-small-caption {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 2.4cqw;
+    line-height: 1.5;
+    margin-top: 2cqw;
+  }
+  .slide.bege .body-small-caption { color: var(--sage-escuro); }
+  .slide.verde .body-small-caption { color: var(--sage-claro); }
+
+  .cta { margin: auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.6cqw; text-align: center; flex: 1; }
+  .cta-question {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 7.4cqw;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+    max-width: 90%;
+  }
+  .cta-call {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 2.6cqw;
+    letter-spacing: 0.08em;
+  }
+  .cta-handle {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 3cqw;
+    letter-spacing: 0.04em;
+    margin-top: 1.8cqw;
+  }
+  .cta-disclaimer {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 1.5cqw;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    max-width: 72%;
+    margin-top: 2cqw;
+  }
+  .slide.bege .cta-question { color: var(--verde); }
+  .slide.bege .cta-call,
+  .slide.bege .cta-handle { color: var(--dourado-mel); }
+  .slide.bege .cta-disclaimer { color: var(--sage-escuro); }
+  .slide.verde .cta-question { color: var(--creme); }
+  .slide.verde .cta-call,
+  .slide.verde .cta-handle { color: var(--dourado-claro); }
+  .slide.verde .cta-disclaimer { color: var(--sage-claro); }
+
+  .data-D { margin-top: 10cqw; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4cqw; text-align: center; flex: 1; }
+  .data-superline {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 7cqw;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--creme);
+    margin: 0;
+  }
+  .data-big {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 16cqw;
+    line-height: 0.9;
+    letter-spacing: 0;
+    color: var(--creme);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .data-italic {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 6.2cqw;
+    line-height: 1;
+    color: var(--dourado-claro);
+    margin: 0;
+  }
+  .data-divider {
+    width: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--dourado-claro), rgba(228,199,126,0));
+    margin: 1.6cqw auto;
+  }
+
+  .card {
+    background: #FFFEF9;
+    border: 1px solid var(--rule);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    border-radius: 2px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .card { background: #1A251F; }
+  }
+  :root[data-theme="dark"] .card { background: #1A251F; }
+
+  .card h3 {
+    margin: 0 0 12px;
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .caption-body {
+    font-family: "Jost";
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--page-fg);
+    white-space: pre-wrap;
+    margin: 0;
+  }
+  .copy-btn {
+    appearance: none;
+    border: 1px solid var(--verde);
+    background: transparent;
+    color: var(--verde);
+    font-family: "Jost";
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 140ms ease, color 140ms ease;
+    border-radius: 1px;
+  }
+  .copy-btn:hover { background: var(--verde); color: var(--creme); }
+  .copy-btn:focus-visible { outline: 2px solid var(--dourado); outline-offset: 2px; }
+  .copy-btn.ok { background: var(--verde); color: var(--creme); border-color: var(--verde); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .copy-btn { border-color: var(--dourado-claro); color: var(--dourado-claro); }
+    :root:not([data-theme="light"]) .copy-btn:hover { background: var(--dourado-claro); color: var(--verde-escuro); }
+  }
+
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 28px; font-family: "Jost"; font-size: 13px; font-weight: 400; }
+  .meta-grid dt {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .meta-grid dd {
+    margin: 0 0 10px;
+    color: var(--page-fg);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .meta-grid dd b { font-weight: 500; }
+
+  footer.foot {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: "Jost";
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+  footer.foot em {
+    font-family: "Cormorant Garamond";
+    font-style: italic;
+    color: var(--page-fg);
+  }
+
+  .warning {
+    background: rgba(201,162,75,0.1);
+    border-left: 2px solid var(--dourado);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-family: "Jost";
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--page-fg);
+    line-height: 1.55;
+  }
+  .warning b { font-weight: 500; }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Pauta Semanal · Dilnei Borges Advocacia</div>
+    <h1>Três temas <em>aprovados</em> para a semana de 3 a 9 de novembro.</h1>
+    <div class="meta">
+      <span><b>Mix do grid:</b> 2 bege + 1 verde</span>
+      <span><b>Resolução:</b> 1080 × 1350</span>
+      <span><b>Fontes:</b> Cormorant Garamond · Jost</span>
+    </div>
+  </header>
+
+  <div class="warning">
+    <b>Antes de aplicar no template:</b> confirme o número da OAB (feed atual mostra 23.954, design-doc tem 25.954) e o @ oficial do Instagram. Logo real agora aplicada nos mockups abaixo (versão para fundo claro + versão para fundo verde).
+  </div>
+
+  <!-- =========== POST 1 — IPTU =========== -->
+  <section class="post" id="post-1">
+    <div class="post-head">
+      <span class="post-num">01</span>
+      <h2 class="post-title">STF: fim do IPTU calculado pela metragem</h2>
+      <div class="post-meta-chips">
+        <span class="chip bege">Formato A · Bege</span>
+        <span class="chip">6 slides</span>
+        <span class="chip">Qua 05/11 · 19h</span>
+      </div>
+    </div>
+
+    <div class="slides">
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="hero-A">
+            <div class="hero-eyebrow">Direito em Pauta</div>
+            <div class="hero-title">STF decidiu.</div>
+            <div class="hero-sub-italic">E agora?</div>
+            <div class="hero-separator"></div>
+          </div>
+          <div class="caption">O cálculo do IPTU pela metragem do imóvel caiu — e isso afeta o seu bolso.</div>
+          <div class="footer">
+            <span>Tributário · Imobiliário</span>
+            <span class="oab">OAB/SC 23.954</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">O que aconteceu</div>
+            <h3 class="body-title">O STF declarou inconstitucional usar só a <em>metragem</em> do imóvel para calcular o IPTU.</h3>
+            <div class="body-small-caption">Tema 1.455 · repercussão geral · outubro de 2026</div>
+          </div>
+          <div class="footer">
+            <span>Tributário · Imobiliário</span>
+            <span class="oab">02 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">O que isso significa</div>
+            <h3 class="body-title">O cálculo precisa partir do <em>valor venal</em> — não da área construída.</h3>
+            <div class="body-small-caption">Efeitos valendo a partir de 12/08/2026, com ressalvas para fatos já pagos e processos pendentes.</div>
+          </div>
+          <div class="footer">
+            <span>Tributário · Imobiliário</span>
+            <span class="oab">03 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">A quem se aplica</div>
+            <ul class="body-list">
+              <li>Proprietários em cidades que calculam IPTU por m²</li>
+              <li>Quem já contesta IPTU em processo pendente</li>
+              <li>Fatos geradores após 12 de agosto de 2026</li>
+            </ul>
+          </div>
+          <div class="footer">
+            <span>Tributário · Imobiliário</span>
+            <span class="oab">04 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">O que você pode fazer</div>
+            <ul class="body-list">
+              <li>Verifique como seu município calcula o IPTU</li>
+              <li>Acompanhe a modulação em processo pendente</li>
+              <li>Procure orientação antes de pedir revisão</li>
+            </ul>
+          </div>
+          <div class="footer">
+            <span>Tributário · Imobiliário</span>
+            <span class="oab">05 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="cta">
+            <h3 class="cta-question">Dúvida sobre o seu caso?</h3>
+            <div class="cta-call">Fale com o escritório</div>
+            <div class="cta-handle">@dilneiborgesadvocacia</div>
+            <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+          </div>
+          <div class="footer">
+            <span>Tributário · Imobiliário</span>
+            <span class="oab">06 / 06</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card">
+      <h3>Legenda</h3>
+      <p class="caption-body" id="cap-1">Pagou IPTU calculado pela metragem do seu imóvel? Pode ser que o cálculo esteja errado.
+
+O Supremo Tribunal Federal decidiu que municípios NÃO podem fixar a alíquota do IPTU usando apenas a área do imóvel (Tema 1.455). O cálculo precisa considerar o valor venal. A decisão vale a partir de 12 de agosto de 2026, com ressalvas para fatos geradores já pagos e processos pendentes.
+
+Na prática, isso abre discussão sobre revisão do imposto em várias cidades e pode gerar restituição em processos administrativos ou judiciais em andamento.
+
+O que você pode fazer:
+→ Verifique como seu município calcula o IPTU
+→ Se já contesta em processo pendente, acompanhe a modulação dos efeitos
+→ Procure orientação profissional antes de pedir revisão
+
+Ficou com dúvida sobre o seu caso? Fale com o escritório.
+
+#direito #advocacia #advogado #iptu #direitotributario #direitoimobiliario #stf #tributario #impostomunicipal #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #justica</p>
+      <button class="copy-btn" data-copy="cap-1">Copiar legenda</button>
+    </div>
+
+    <div class="card">
+      <dl class="meta-grid">
+        <div><dt>Horário</dt><dd><b>Quarta, 05/11 · 19h00</b> (Brasília)</dd></div>
+        <div><dt>Formato · variação</dt><dd>Formato A (manchete) · fundo bege</dd></div>
+        <div><dt>Fonte primária</dt><dd>STF — Tema 1.455 (modulação em outubro/2026)</dd></div>
+        <div><dt>Alt text</dt><dd>Carrossel de 6 slides em bege sobre decisão do STF que considerou inconstitucional cobrar IPTU apenas pela área do imóvel.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =========== POST 2 — ALIMENTOS =========== -->
+  <section class="post" id="post-2">
+    <div class="post-head">
+      <span class="post-num">02</span>
+      <h2 class="post-title">STJ: imóvel em acordo de alimentos não entra em colação</h2>
+      <div class="post-meta-chips">
+        <span class="chip bege">Formato A · Bege</span>
+        <span class="chip">6 slides</span>
+        <span class="chip">Qui 06/11 · 19h</span>
+      </div>
+    </div>
+
+    <div class="slides">
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="hero-A">
+            <div class="hero-eyebrow">Direito em Pauta</div>
+            <div class="hero-title">STJ decidiu.</div>
+            <div class="hero-sub-italic">E agora?</div>
+            <div class="hero-separator"></div>
+          </div>
+          <div class="caption">Imóvel dado em acordo de alimentos pros filhos não volta pra herança.</div>
+          <div class="footer">
+            <span>Família · Sucessões</span>
+            <span class="oab">OAB/SC 23.954</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">O que aconteceu</div>
+            <h3 class="body-title">A 4ª Turma do STJ afastou da <em>colação</em> os imóveis transferidos a filhos em acordo de alimentos.</h3>
+            <div class="body-small-caption">Decisão unânime · outubro de 2026</div>
+          </div>
+          <div class="footer">
+            <span>Família · Sucessões</span>
+            <span class="oab">02 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">O que isso significa</div>
+            <h3 class="body-title">O imóvel foi <em>quitação de pensão</em> — não adiantamento de herança.</h3>
+            <div class="body-small-caption">Não volta pra partilha do inventário quando o pai (ou mãe) falecer.</div>
+          </div>
+          <div class="footer">
+            <span>Família · Sucessões</span>
+            <span class="oab">03 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">A quem afeta</div>
+            <ul class="body-list">
+              <li>Pais separados que usaram imóvel para pagar pensão</li>
+              <li>Famílias em inventário após o falecimento do doador</li>
+              <li>Herdeiros que questionam a divisão da herança</li>
+            </ul>
+          </div>
+          <div class="footer">
+            <span>Família · Sucessões</span>
+            <span class="oab">04 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body-A">
+            <div class="body-eyebrow">Antes de agir</div>
+            <ul class="body-list">
+              <li>Confira como foi formalizado o acordo original</li>
+              <li>Guarde a documentação do acordo de alimentos</li>
+              <li>Procure orientação em sucessões antes do inventário</li>
+            </ul>
+          </div>
+          <div class="footer">
+            <span>Família · Sucessões</span>
+            <span class="oab">05 / 06</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide bege">
+        <div class="layer-gradient"></div>
+        <div class="layer-texture"></div>
+        <div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="cta">
+            <h3 class="cta-question">Precisa de ajuda com inventário?</h3>
+            <div class="cta-call">Fale com o escritório</div>
+            <div class="cta-handle">@dilneiborgesadvocacia</div>
+            <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+          </div>
+          <div class="footer">
+            <span>Família · Sucessões</span>
+            <span class="oab">06 / 06</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card">
+      <h3>Legenda</h3>
+      <p class="caption-body" id="cap-2">Imóvel que o pai deu em acordo de alimentos pros filhos tem que voltar pra herança quando ele falecer? O STJ decidiu que NÃO.
+
+A Quarta Turma do STJ, por unanimidade, afastou da colação os imóveis transferidos a filhos dentro de acordo de pensão alimentícia. Em outras palavras: o imóvel não volta pra partilha do inventário.
+
+O entendimento é claro: o imóvel foi quitação de pensão, não adiantamento de herança. Resolve dúvida clássica em famílias com separação prévia.
+
+Isso afeta famílias em que:
+→ Pais separados usaram imóvel para pagar pensão alimentícia
+→ O doador faleceu e começou o inventário
+→ Outros herdeiros questionam a divisão
+
+Antes de agir:
+→ Verifique como foi formalizado o acordo original
+→ Guarde a documentação do acordo de alimentos
+→ Procure orientação em sucessões antes do inventário
+
+Ficou com dúvida? Fale com o escritório.
+
+#direito #advocacia #advogado #direitodefamilia #direitodassucessoes #heranca #inventario #stj #pensaoalimenticia #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #familia</p>
+      <button class="copy-btn" data-copy="cap-2">Copiar legenda</button>
+    </div>
+
+    <div class="card">
+      <dl class="meta-grid">
+        <div><dt>Horário</dt><dd><b>Quinta, 06/11 · 19h00</b> (Brasília)</dd></div>
+        <div><dt>Formato · variação</dt><dd>Formato A (manchete) · fundo bege</dd></div>
+        <div><dt>Fonte primária</dt><dd>STJ — 4ª Turma, decisão unânime (outubro/2026)</dd></div>
+        <div><dt>Alt text</dt><dd>Carrossel de 6 slides em bege sobre decisão da 4ª Turma do STJ que afastou da colação em inventário os imóveis transferidos a filhos em acordo de alimentos.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =========== POST 3 — ALUGUEL VERDE =========== -->
+  <section class="post" id="post-3">
+    <div class="post-head">
+      <span class="post-num">03</span>
+      <h2 class="post-title">Reforma tributária: o teto do locador PF</h2>
+      <div class="post-meta-chips">
+        <span class="chip verde">Formato D · Verde</span>
+        <span class="chip">1 slide (feed)</span>
+        <span class="chip">Dom 09/11 · 10h30</span>
+      </div>
+    </div>
+
+    <div class="single-slide">
+      <div class="slide-wrap">
+        <article class="slide verde">
+          <div class="layer-gradient"></div>
+          <div class="layer-texture"></div>
+          <div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img class="logo-light" src="logo-claro.webp" alt="Dilnei Borges Advocacia"><img class="logo-dark" src="logo-verde.webp" alt="Dilnei Borges Advocacia"></div>
+            <div class="data-D">
+              <div class="hero-eyebrow">Reforma Tributária · Aluguel</div>
+              <p class="data-superline">Aluga imóvel?</p>
+              <h2 class="data-big">R$ 240 mil</h2>
+              <p class="data-italic">por ano · mais de 3 imóveis</p>
+              <div class="data-divider"></div>
+            </div>
+            <div class="caption">A reforma só pega quem fatura mais que isso — e tem mais de 3 imóveis alugados.</div>
+            <div class="footer">
+              <span>Tributário · Imobiliário</span>
+              <span class="oab">OAB/SC 23.954</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Legenda</h3>
+      <p class="caption-body" id="cap-3">Aluga imóvel? Respire fundo. A reforma tributária só pega quem fatura mais de R$ 240 mil por ano E tem mais de 3 imóveis alugados.
+
+A regulamentação definiu: a pessoa física locadora SÓ vira contribuinte de IBS/CBS se, no ano anterior:
+• A receita de aluguéis passar de R$ 240 mil
+• E tiver mais de 3 imóveis alugados
+
+Também vira contribuinte quem vende imóveis com frequência que caracterize atividade econômica.
+
+Pequenos locadores — 1 a 3 imóveis e receita até R$ 240 mil/ano — seguem fora do IBS/CBS. Quem está perto do limite precisa planejar antes de 2027, quando a CBS entra em cobrança.
+
+Dúvida sobre o seu caso? Fale com o escritório.
+
+#direito #advocacia #advogado #reformatributaria #aluguel #ibs #cbs #direitotributario #direitoimobiliario #locacao #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #tributario</p>
+      <button class="copy-btn" data-copy="cap-3">Copiar legenda</button>
+    </div>
+
+    <div class="card">
+      <dl class="meta-grid">
+        <div><dt>Horário</dt><dd><b>Domingo, 09/11 · 10h30</b> (Brasília)</dd></div>
+        <div><dt>Formato · variação</dt><dd>Formato D (dado em destaque) · fundo verde</dd></div>
+        <div><dt>Fonte primária</dt><dd>Regulamentação da reforma tributária — Decreto 13.075/2026 e normas correlatas</dd></div>
+        <div><dt>Alt text</dt><dd>Post único em fundo verde escuro com título "R$ 240 mil" em destaque e caption explicando o teto para locadores pessoa física na reforma tributária.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Pacote da semana — <em>Dilnei Borges Advocacia</em>. Os mockups agora usam a logo oficial do escritório (coluna grega dourada + ADVOCACIA + Dilnei Borges), Cormorant Garamond para títulos com palavras-chave em italic dourado, Jost light para captions, borda interna respirando, gradiente radial no canto superior esquerdo e textura diagonal sutil. Para publicar: abra o template real no Claude Design, aplique o conteúdo (slide a slide, conforme <em>conteudo-por-slide.md</em>), exporte PNG 1080×1350 e publique no horário sugerido.</p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      var id = btn.getAttribute('data-copy');
+      var el = document.getElementById(id);
+      if(!el) return;
+      var text = el.innerText;
+      var original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copiado ✓';
+        btn.classList.add('ok');
+      } catch (e) {
+        var range = document.createRange();
+        range.selectNode(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = 'Selecionado — Ctrl+C';
+        btn.classList.add('ok');
+      }
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.classList.remove('ok');
+      }, 2400);
+    });
+  });
+</script>
