@@ -1,0 +1,815 @@
+<title>Posts 23/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --page-bg: #F4EFE2;
+    --page-fg: #0A3A2A;
+    --muted: #6B7A70;
+    --rule: rgba(10,58,42,.14);
+    --verde: #0A3A2A;
+    --verde-claro: #14563E;
+    --verde-escuro: #051D14;
+    --bege: #EFE6D3;
+    --bege-claro: #FBF6EA;
+    --bege-escuro: #E2D6BC;
+    --creme: #F1EBDD;
+    --dourado: #C9A24B;
+    --dourado-escuro: #9C7A33;
+    --dourado-claro: #E4C77E;
+    --dourado-mel: #8A6E2E;
+    --dourado-creme: #E9D6A2;
+    --sage: #9FB3A8;
+    --sage-claro: #CFDBD3;
+    --sage-escuro: #3B4A42;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #0E1A14;
+      --page-fg: #F1EBDD;
+      --muted: #9FB3A8;
+      --rule: rgba(241,235,221,.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #0E1A14;
+    --page-fg: #F1EBDD;
+    --muted: #9FB3A8;
+    --rule: rgba(241,235,221,.14);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font-family: "Jost", system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.55;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 56px 80px;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .masthead { padding-bottom: 36px; border-bottom: 1px solid var(--rule); margin-bottom: 44px; }
+  .eyebrow {
+    font-family: "Jost";
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+    font-weight: 500;
+  }
+  .masthead h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5.5vw, 54px);
+    line-height: 1.04;
+    letter-spacing: -0.005em;
+    margin: 14px 0 0;
+    text-wrap: balance;
+    color: var(--page-fg);
+  }
+  .masthead h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--dourado-mel);
+  }
+  .masthead .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 32px;
+    font-family: "Jost";
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 22px;
+    font-weight: 400;
+  }
+  .masthead .meta b { color: var(--page-fg); font-weight: 500; }
+
+  .post { margin-bottom: 60px; }
+  .post-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .post-num {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--dourado-mel);
+    letter-spacing: 0.02em;
+  }
+  .post-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    flex: 1 1 260px;
+    min-width: 0;
+    letter-spacing: -0.005em;
+  }
+  .post-tag {
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+    font-weight: 500;
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+  }
+  .post-tag.educativo { background: rgba(201,162,75,.08); }
+  .post-tag.notícia { background: rgba(10,58,42,.06); }
+  .post-tag.preventivo { background: rgba(159,179,168,.12); }
+
+  .post-meta-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 5px 11px;
+    color: var(--dourado-escuro);
+    background: transparent;
+    border: 1px solid var(--rule);
+  }
+  .chip.bege { background: var(--bege); color: var(--verde); border-color: var(--bege); }
+
+  .slides {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 860px) { .slides { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .slides { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; } }
+
+  .slide {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    font-family: "Cormorant Garamond", serif;
+    color: var(--verde);
+    container-type: inline-size;
+    box-shadow: 0 2px 12px rgba(10,58,42,.08);
+    background: var(--bege);
+  }
+
+  .slide .layer-gradient {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(95% 75% at 22% 14%, var(--bege-claro) 0%, var(--bege) 52%, var(--bege-escuro) 100%);
+  }
+  .slide .layer-texture {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.3;
+    background: repeating-linear-gradient(115deg, rgba(156,122,51,.22) 0px, rgba(156,122,51,.22) 1px, transparent 1px, transparent 28px);
+  }
+  .slide .layer-border {
+    position: absolute; inset: 4.6%; z-index: 2; pointer-events: none;
+    border: 1px solid rgba(201,162,75,.34);
+  }
+  .slide .content {
+    position: absolute; inset: 9.3%; z-index: 3;
+    display: flex; flex-direction: column;
+  }
+
+  .logo-area { width: 20cqw; aspect-ratio: 5 / 4; display: block; }
+  .logo-area img { width: 100%; height: auto; display: block; }
+
+  .hero { margin-top: 14cqw; display: flex; flex-direction: column; gap: 2.4cqw; }
+  .hero-eyebrow {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 1.9cqw;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--dourado-mel);
+  }
+  .hero-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 7.8cqw;
+    line-height: 1.04;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--verde);
+    text-wrap: pretty;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--dourado-mel);
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 5cqw;
+    line-height: 1.1;
+    color: var(--dourado-mel);
+    margin: 0;
+  }
+  .hero-separator {
+    width: 18%;
+    height: 2px;
+    background: var(--dourado-escuro);
+    margin-top: 1.2cqw;
+    opacity: 0.9;
+  }
+
+  .body { margin-top: 6cqw; display: flex; flex-direction: column; gap: 2.4cqw; }
+  .body-eyebrow {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 1.85cqw;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+  }
+  .body-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 5.6cqw;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--verde);
+    text-wrap: pretty;
+  }
+  .body-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--dourado-mel);
+  }
+  .body-list { list-style: none; padding: 0; margin: 1cqw 0 0; display: flex; flex-direction: column; gap: 2cqw; }
+  .body-list li {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 4.2cqw;
+    line-height: 1.2;
+    padding-left: 4cqw;
+    position: relative;
+    color: var(--verde);
+    text-wrap: pretty;
+  }
+  .body-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.58em;
+    width: 2.4cqw;
+    height: 1px;
+    background: var(--dourado);
+  }
+  .body-list li em { font-style: italic; color: var(--dourado-mel); font-weight: 500; }
+  .body-caption {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 2.3cqw;
+    line-height: 1.5;
+    margin-top: 1.4cqw;
+    color: var(--sage-escuro);
+    text-wrap: pretty;
+  }
+
+  .cta { margin: auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4cqw; text-align: center; flex: 1; }
+  .cta-question {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 6.6cqw;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--verde);
+    text-wrap: balance;
+    max-width: 92%;
+  }
+  .cta-call {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 2.6cqw;
+    letter-spacing: 0.08em;
+    color: var(--dourado-mel);
+  }
+  .cta-handle {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 3cqw;
+    letter-spacing: 0.04em;
+    color: var(--dourado-mel);
+    margin-top: 1.4cqw;
+  }
+  .cta-disclaimer {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 1.5cqw;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: var(--sage-escuro);
+    max-width: 78%;
+    margin-top: 1.8cqw;
+  }
+
+  .footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 1.55cqw;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-escuro);
+    padding-top: 2.4cqw;
+  }
+  .footer .oab { color: var(--dourado-mel); }
+
+  .card {
+    background: #FFFEF9;
+    border: 1px solid var(--rule);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    border-radius: 2px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .card { background: #1A251F; }
+  }
+  :root[data-theme="dark"] .card { background: #1A251F; }
+
+  .card h3 {
+    margin: 0 0 12px;
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .caption-body {
+    font-family: "Jost";
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--page-fg);
+    white-space: pre-wrap;
+    margin: 0;
+  }
+  .copy-btn {
+    appearance: none;
+    border: 1px solid var(--verde);
+    background: transparent;
+    color: var(--verde);
+    font-family: "Jost";
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 140ms ease, color 140ms ease;
+    border-radius: 1px;
+  }
+  .copy-btn:hover { background: var(--verde); color: var(--creme); }
+  .copy-btn:focus-visible { outline: 2px solid var(--dourado); outline-offset: 2px; }
+  .copy-btn.ok { background: var(--verde); color: var(--creme); border-color: var(--verde); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .copy-btn { border-color: var(--dourado-claro); color: var(--dourado-claro); }
+    :root:not([data-theme="light"]) .copy-btn:hover { background: var(--dourado-claro); color: var(--verde-escuro); }
+  }
+
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 28px; font-family: "Jost"; font-size: 13px; font-weight: 400; }
+  .meta-grid dt {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .meta-grid dd {
+    margin: 0 0 10px;
+    color: var(--page-fg);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .meta-grid dd b { font-weight: 500; }
+
+  footer.foot {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: "Jost";
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+  footer.foot em {
+    font-family: "Cormorant Garamond";
+    font-style: italic;
+    color: var(--page-fg);
+  }
+
+  .warning {
+    background: rgba(201,162,75,0.1);
+    border-left: 2px solid var(--dourado);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-family: "Jost";
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--page-fg);
+    line-height: 1.55;
+  }
+  .warning b { font-weight: 500; }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Pauta Semanal · Dilnei Borges Advocacia</div>
+    <h1>Três temas <em>aprovados</em> para a semana de 23 a 30 de novembro.</h1>
+    <div class="meta">
+      <span><b>Mix:</b> 1 educativo + 1 notícia + 1 preventivo</span>
+      <span><b>Formato:</b> 3 carrosséis bege · 4 slides cada</span>
+      <span><b>Ganchos:</b> dado forte · pergunta provocativa</span>
+    </div>
+  </header>
+
+  <div class="warning">
+    <b>Antes de aplicar no template:</b> confirme o número da OAB
+    (feed mostra 23.954, design-doc tem 25.954) e o @ oficial do Instagram.
+    Padrão novo: 4 slides, gancho no slide 1 (dado ou pergunta), tom sóbrio
+    sem sensacionalismo.
+  </div>
+
+  <!-- =========== POST 1 — Compra e venda =========== -->
+  <section class="post" id="post-1">
+    <div class="post-head">
+      <span class="post-num">01</span>
+      <h2 class="post-title">Compra e venda: a análise prévia que o contrato não revela</h2>
+      <div class="post-meta-chips">
+        <span class="post-tag educativo">Educativo</span>
+        <span class="chip bege">Carrossel bege</span>
+        <span class="chip">4 slides · Qua 26/11 · 19h</span>
+      </div>
+    </div>
+
+    <div class="slides">
+      <!-- Slide 1 — Capa (dado forte) -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="hero">
+            <div class="hero-eyebrow">Compra e venda de imóvel</div>
+            <h3 class="hero-title">O que o contrato de compra e venda não te mostra.</h3>
+            <p class="hero-sub">Três riscos que só uma análise prévia revela.</p>
+            <div class="hero-separator"></div>
+          </div>
+          <div class="footer"><span>Imobiliário</span><span class="oab">OAB/SC 23.954 · 01 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 2 — Os riscos -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body">
+            <div class="body-eyebrow">O que pode passar despercebido</div>
+            <h3 class="body-title">Três pontos que <em>passam despercebidos</em> na assinatura.</h3>
+            <ul class="body-list">
+              <li>Matrícula com <em>ônus</em> ou ação em curso contra o vendedor</li>
+              <li>Débitos tributários sobre o imóvel (IPTU, ITBI)</li>
+              <li>Construção <em>não averbada</em> ou dados divergentes</li>
+            </ul>
+          </div>
+          <div class="footer"><span>Imobiliário</span><span class="oab">02 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 3 — A análise prévia -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body">
+            <div class="body-eyebrow">A análise prévia</div>
+            <h3 class="body-title">O que o advogado <em>examina</em> antes da assinatura.</h3>
+            <ul class="body-list">
+              <li>Certidões pessoais do vendedor (cíveis, trabalhistas, fiscais)</li>
+              <li>Matrícula atualizada e ônus reais vinculados</li>
+              <li>Regularidade da construção e situação do imóvel</li>
+            </ul>
+          </div>
+          <div class="footer"><span>Imobiliário</span><span class="oab">03 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 4 — CTA -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="cta">
+            <h3 class="cta-question">Antes de assinar, uma análise.</h3>
+            <div class="cta-call">Fale com o escritório</div>
+            <div class="cta-handle">@dilneiborgesadvocacia</div>
+            <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+          </div>
+          <div class="footer"><span>Imobiliário</span><span class="oab">04 / 04</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card">
+      <h3>Legenda</h3>
+      <p class="caption-body" id="cap-1">O contrato de compra e venda de um imóvel fala sobre preço, prazo e forma de pagamento. Mas o que ele raramente mostra é o que pode comprometer todo o negócio depois.
+
+Três riscos que uma análise jurídica prévia costuma encontrar:
+
+→ A matrícula tem ônus, hipoteca ou ação em curso contra o vendedor
+→ O imóvel acumula débitos tributários que serão transferidos (IPTU, taxas)
+→ A construção não está averbada, ou a planta não bate com a matrícula
+
+A análise jurídica antes da assinatura não é formalidade — é o que separa a compra bem-feita da compra com surpresas. Ela levanta as certidões do vendedor, verifica a matrícula atualizada e confere a regularidade da construção.
+
+Pensando em comprar? Fale com o escritório antes de assinar.
+
+#direito #advocacia #advogado #direitoimobiliario #compradeimovel #contratodecompraevenda #imovel #escritura #matricula #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #imobiliario</p>
+      <button class="copy-btn" data-copy="cap-1">Copiar legenda</button>
+    </div>
+
+    <div class="card">
+      <dl class="meta-grid">
+        <div><dt>Horário</dt><dd><b>Quarta, 26/11 · 19h00</b> (Brasília)</dd></div>
+        <div><dt>Tipo</dt><dd>Educativo atemporal · tom sóbrio</dd></div>
+        <div><dt>Gancho</dt><dd>Dado forte — "O que o contrato não te mostra"</dd></div>
+        <div><dt>Objetivo</dt><dd>Posicionar a análise jurídica como etapa obrigatória, não opcional</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =========== POST 2 — Contrato de gaveta =========== -->
+  <section class="post" id="post-2">
+    <div class="post-head">
+      <span class="post-num">02</span>
+      <h2 class="post-title">Contrato de gaveta: o IPTU continua com quem está na matrícula</h2>
+      <div class="post-meta-chips">
+        <span class="post-tag notícia">Notícia</span>
+        <span class="chip bege">Carrossel bege</span>
+        <span class="chip">4 slides · Qui 27/11 · 19h</span>
+      </div>
+    </div>
+
+    <div class="slides">
+      <!-- Slide 1 -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="hero">
+            <div class="hero-eyebrow">STJ · Tema 122 reforçado</div>
+            <h3 class="hero-title">Vendeu seu imóvel só com <em>contrato de gaveta</em>?</h3>
+            <p class="hero-sub">O IPTU ainda é seu.</p>
+            <div class="hero-separator"></div>
+          </div>
+          <div class="footer"><span>Tributário · Imobiliário</span><span class="oab">OAB/SC 23.954 · 01 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body">
+            <div class="body-eyebrow">O que o STJ disse</div>
+            <h3 class="body-title">A cessão particular da posse <em>não</em> afasta a responsabilidade do proprietário registral.</h3>
+            <p class="body-caption">Reforço do Tema 122 pela 2ª Turma em novembro de 2026. Mesmo que o município saiba da transferência, a dívida permanece com quem está na matrícula.</p>
+          </div>
+          <div class="footer"><span>Tributário · Imobiliário</span><span class="oab">02 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body">
+            <div class="body-eyebrow">Se você…</div>
+            <ul class="body-list">
+              <li>Vendeu um imóvel por <em>contrato particular</em> ou gaveta</li>
+              <li>Nunca formalizou a transferência da matrícula</li>
+              <li>Continua recebendo boletos de IPTU após a venda</li>
+            </ul>
+            <p class="body-caption">A única saída é regularizar a transferência no cartório de registro.</p>
+          </div>
+          <div class="footer"><span>Tributário · Imobiliário</span><span class="oab">03 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 4 — CTA -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="cta">
+            <h3 class="cta-question">Precisa regularizar uma venda antiga?</h3>
+            <div class="cta-call">Fale com o escritório</div>
+            <div class="cta-handle">@dilneiborgesadvocacia</div>
+            <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+          </div>
+          <div class="footer"><span>Tributário · Imobiliário</span><span class="oab">04 / 04</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card">
+      <h3>Legenda</h3>
+      <p class="caption-body" id="cap-2">Vendeu um imóvel só com contrato particular, sem formalizar a transferência no cartório? A conta do IPTU pode continuar chegando pra você — e o STJ acaba de reforçar esse entendimento.
+
+A 2ª Turma do Superior Tribunal de Justiça decidiu, em novembro de 2026, que a cessão particular da posse não afasta a responsabilidade do proprietário registral pelo IPTU. Mesmo que o município tenha sido comunicado sobre a venda, quem está na matrícula continua sendo o responsável.
+
+É a aplicação do Tema 122, que já vinha sendo seguido: quem aparece no registro responde pelo imposto, até que a transferência seja formalizada.
+
+Se você vendeu e nunca escriturou, duas coisas valem a pena:
+
+→ Levantar se há débitos abertos no seu nome
+→ Buscar a regularização da transferência via cartório
+
+Fale com o escritório antes que a cobrança vire execução.
+
+#direito #advocacia #advogado #iptu #direitotributario #direitoimobiliario #stj #contratodegaveta #compraevenda #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #regularizacao</p>
+      <button class="copy-btn" data-copy="cap-2">Copiar legenda</button>
+    </div>
+
+    <div class="card">
+      <dl class="meta-grid">
+        <div><dt>Horário</dt><dd><b>Quinta, 27/11 · 19h00</b> (Brasília)</dd></div>
+        <div><dt>Tipo</dt><dd>Notícia + preventivo</dd></div>
+        <div><dt>Gancho</dt><dd>Pergunta provocativa</dd></div>
+        <div><dt>Fonte primária</dt><dd>STJ — 2ª Turma, Informativo 908 (novembro/2026) · Tema 122</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =========== POST 3 — Plano de saúde =========== -->
+  <section class="post" id="post-3">
+    <div class="post-head">
+      <span class="post-num">03</span>
+      <h2 class="post-title">Plano de saúde: negativa de bomba de insulina e os passos antes da Justiça</h2>
+      <div class="post-meta-chips">
+        <span class="post-tag preventivo">Preventivo</span>
+        <span class="chip bege">Carrossel bege</span>
+        <span class="chip">4 slides · Dom 30/11 · 10h30</span>
+      </div>
+    </div>
+
+    <div class="slides">
+      <!-- Slide 1 -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="hero">
+            <div class="hero-eyebrow">STJ · Tema 1316</div>
+            <h3 class="hero-title">Seu plano negou a <em>bomba de insulina</em>?</h3>
+            <p class="hero-sub">O STJ já decidiu.</p>
+            <div class="hero-separator"></div>
+          </div>
+          <div class="footer"><span>Consumidor · Saúde</span><span class="oab">OAB/SC 23.954 · 01 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body">
+            <div class="body-eyebrow">A decisão</div>
+            <h3 class="body-title">O sistema de infusão contínua <em>não</em> se enquadra nas exceções do rol da ANS.</h3>
+            <p class="body-caption">Segunda Seção do STJ, Tema 1316, novembro de 2026. Pacientes com diabetes tipo 1 que preencham os critérios médicos têm direito à cobertura.</p>
+          </div>
+          <div class="footer"><span>Consumidor · Saúde</span><span class="oab">02 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="body">
+            <div class="body-eyebrow">Antes de ir à Justiça</div>
+            <ul class="body-list">
+              <li>Peça a negativa <em>por escrito</em>, com justificativa técnica</li>
+              <li>Acione a ouvidoria do plano e registre reclamação na ANS</li>
+              <li>Reúna laudos e prescrições que fundamentem a indicação</li>
+            </ul>
+            <p class="body-caption">Boa parte das negativas é revertida antes de uma ação judicial.</p>
+          </div>
+          <div class="footer"><span>Consumidor · Saúde</span><span class="oab">03 / 04</span></div>
+        </div>
+      </article>
+
+      <!-- Slide 4 — CTA -->
+      <article class="slide">
+        <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+        <div class="content">
+          <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia"></div>
+          <div class="cta">
+            <h3 class="cta-question">Negativa que não pode ficar sem resposta?</h3>
+            <div class="cta-call">Fale com o escritório</div>
+            <div class="cta-handle">@dilneiborgesadvocacia</div>
+            <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+          </div>
+          <div class="footer"><span>Consumidor · Saúde</span><span class="oab">04 / 04</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card">
+      <h3>Legenda</h3>
+      <p class="caption-body" id="cap-3">Negativa de bomba de insulina pelo plano de saúde: o STJ já decidiu que esse tratamento não está nas exceções do rol da ANS.
+
+A Segunda Seção do Superior Tribunal de Justiça consolidou, em novembro de 2026 (Tema 1316), que o sistema de infusão contínua de insulina deve ser coberto para pacientes com diabetes tipo 1 que preencham os critérios médicos.
+
+Mas antes de ir direto à Justiça, vale percorrer três passos que costumam resolver a negativa mais rápido:
+
+→ Peça a negativa por escrito, com justificativa técnica detalhada
+→ Acione a ouvidoria do plano e registre reclamação na ANS
+→ Reúna laudos, exames e prescrições que fundamentem a indicação
+
+Boa parte das negativas é revertida nessa fase, sem precisar do Judiciário. Quando não é, você já entra na ação com o conjunto probatório pronto.
+
+Está enfrentando uma negativa? Fale com o escritório.
+
+#direito #advocacia #advogado #direitodoconsumidor #planodesaude #saude #diabetes #bombadeinsulina #stj #ans #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia</p>
+      <button class="copy-btn" data-copy="cap-3">Copiar legenda</button>
+    </div>
+
+    <div class="card">
+      <dl class="meta-grid">
+        <div><dt>Horário</dt><dd><b>Domingo, 30/11 · 10h30</b> (Brasília)</dd></div>
+        <div><dt>Tipo</dt><dd>Preventivo + educativo</dd></div>
+        <div><dt>Gancho</dt><dd>Pergunta provocativa</dd></div>
+        <div><dt>Fonte primária</dt><dd>STJ — Segunda Seção, Tema 1316 (novembro/2026)</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Pacote da semana — <em>Dilnei Borges Advocacia</em>. Três carrosséis bege de 4 slides cada, no padrão sóbrio do escritório: Cormorant Garamond para títulos com palavras-chave em italic dourado, Jost light para captions, gradiente radial no canto superior esquerdo, borda interna fina e logo oficial. Para publicar: abra o template no Claude Design, aplique o conteúdo conforme <em>conteudo-por-slide.md</em>, exporte PNG 1080 × 1350 e publique nos horários sugeridos.</p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      var id = btn.getAttribute('data-copy');
+      var el = document.getElementById(id);
+      if(!el) return;
+      var text = el.innerText;
+      var original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copiado ✓';
+        btn.classList.add('ok');
+      } catch (e) {
+        var range = document.createRange();
+        range.selectNode(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = 'Selecionado — Ctrl+C';
+        btn.classList.add('ok');
+      }
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.classList.remove('ok');
+      }, 2400);
+    });
+  });
+</script>
