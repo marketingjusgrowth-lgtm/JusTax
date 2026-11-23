@@ -12,8 +12,20 @@ volume:
   temas_sugeridos: 5        # na entrega semanal, apresenta top 5 para o advogado escolher 3
 
 formatos:
-  - carrossel
+  - carrossel               # máximo 4 slides (capa + 2 desdobramentos + CTA)
   - feed_single
+
+ganchos_permitidos:         # os únicos tipos de abertura aprovados
+  - dado_forte              # número, data, prazo em destaque (preferido)
+  - pergunta_provocativa    # dúvida que o leitor PF já tem
+
+estrutura_carrossel:
+  slides: 4                 # fixo em 4 — não inflar
+  sequencia:
+    - "slide 1: dado forte ou pergunta provocativa (gancho)"
+    - "slide 2: desdobramento (o que significa / por que importa)"
+    - "slide 3: aplicação prática (quem se encaixa + o que fazer)"
+    - "slide 4: CTA + assinatura"
 
 publicacao:
   modo: manual              # alternativas futuras: buffer, instagram_graph_api

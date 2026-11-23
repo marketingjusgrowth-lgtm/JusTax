@@ -1,81 +1,121 @@
-# Estrutura dos posts
+# Estrutura dos posts — padrão Dilnei Borges Advocacia
 
-## Carrossel padrão (6 slides — pode variar entre 3 e 8)
+## Carrossel — 4 slides fixos
 
-### Slide 1 — Capa (gancho)
-- Pergunta provocativa OU manchete afirmativa forte
-- Ex.: "Vendeu seu imóvel em 2026? A Receita quer saber mais."
-- Visual: fundo escuro, título dourado, nome do escritório pequeno embaixo
+A estrutura é enxuta e direto ao ponto. Não aumentar pra 5+ slides —
+o público não rola mais.
 
-### Slide 2 — O que aconteceu
-- "Em [data], o [órgão] decidiu/publicou [X]."
-- 2 linhas no máximo
-- Visual: fundo claro, destaque na data e no órgão
+### Slide 1 — GANCHO (dado forte OU pergunta provocativa)
 
-### Slide 3 — O que isso significa (na prática)
-- Tradução em português humano
-- Sem "advoguês"
-- 1 parágrafo curto
+A escolha depende do **contexto do tema**:
 
-### Slide 4 — A quem se aplica
-- Lista: "Isso vale se você..." (bullet points)
-- 3–5 itens no máximo
+- **Usar DADO FORTE** quando o tema traz um número, data ou prazo que
+  por si só já é noticioso:
+  - Datas de vigência ("12/08/2026")
+  - Tetos e limites ("R$ 240 mil")
+  - Percentuais ("alíquota de 11,3%")
+  - Prazos finais ("31/12 para aderir")
 
-### Slide 5 — O que você precisa fazer
-- Passos práticos
-- Ou "o que observar", "como se proteger", "até quando"
+- **Usar PERGUNTA PROVOCATIVA** quando o tema é uma mudança conceitual
+  ou uma dúvida que o público PF já tem:
+  - "O cálculo do seu IPTU é feito pela metragem?"
+  - "Herdou um imóvel em condomínio? Cuidado."
+  - "Seu contrato de aluguel prevê reajuste automático?"
 
-### Slide 6 — CTA + disclaimer
-- "Ficou com dúvida sobre seu caso? Fale com o escritório"
-- Handle do Instagram
-- Disclaimer: "Conteúdo informativo. Para o seu caso específico, consulte um advogado."
+Em ambos os casos:
+- Palavra-chave em italic + cor dourada
+- Logo oficial no canto superior esquerdo
+- Rodapé: "deslize →" + numeração 01/04
+
+### Slide 2 — DESDOBRAMENTO
+
+Explica o que está por trás do gancho. Responde: "por que isso é relevante?"
+ou "o que mudou?".
+
+- Eyebrow curto: `O QUE MUDOU`, `A DECISÃO`, `POR TRÁS DISSO`
+- Título em Cormorant (6–7cqw) com palavra-chave em italic
+- Caption em Jost light com fonte da notícia (STF, STJ, Decreto, Lei)
+- Numeração 02/04
+
+### Slide 3 — APLICAÇÃO PRÁTICA
+
+Traduz pro leitor PF: "isso afeta você se..." + "o que fazer".
+
+- Eyebrow: `SE VOCÊ…`, `QUEM SE ENCAIXA`, `O PRÓXIMO PASSO`
+- Lista enxuta de 3 itens no máximo (não mais)
+- Caption de fechamento com uma orientação clara
+- Numeração 03/04
+
+### Slide 4 — CTA
+
+- Pergunta italic centralizada ("Dúvida sobre o seu caso?")
+- "Fale com o escritório"
+- @dilneiborgesadvocacia
+- Disclaimer pequeno
+- Numeração 04/04
 
 ---
 
-## Feed single
+## Feed single (1 imagem)
 
-### Imagem
-- 1 frase forte centralizada OU 1 estatística com fonte
-- Ex.: "STJ decidiu: condomínio NÃO pode cobrar taxa extra sem assembleia."
+Mesma lógica do slide 1 do carrossel: **dado forte OU pergunta
+provocativa**, com explicação completa na legenda.
 
-### Legenda estruturada
+- Imagem forte (verde ou bege) com o gancho centralizado
+- Legenda estruturada: hook na linha 1 → 2–3 parágrafos → CTA
+- 10–15 hashtags
+
+---
+
+## Regras gerais de copy
+
+### Nunca mais fazer
+
+- "STJ decidiu. **E agora?**" (ou variações "STF decidiu, E agora") —
+  virou fórmula batida e previsível
+- Gancho que começa com nome do órgão como manchete única
+- Carrossel com mais de 4 slides
+
+### Sempre fazer
+
+- Gancho que fisga em até 2 segundos (dado ou pergunta)
+- Palavra-chave em italic + cor dourada em pelo menos um slide
+- Linguagem de pessoa comum, não "advoguês"
+- 1 ideia por slide — nunca empilhar
+- CTA claro no último slide
+
+---
+
+## Legenda para Instagram (vale para carrossel e feed)
+
+Estrutura:
 
 ```
-[HOOK — linha 1 — gera curiosidade/urgência]
+[HOOK na linha 1 — mesma pergunta/dado do slide 1, reforçado]
 
-[CONTEXTO — 2–3 parágrafos curtos explicando]
-- O que aconteceu
-- Por que importa
-- O que fazer
+[CONTEXTO em 2–3 parágrafos curtos: o que mudou, por que importa, quem afeta]
 
-[CTA — 1 linha]
-Ficou com dúvida? Fale com o escritório.
+[AÇÃO prática em 1–2 bullets com →]
 
-#hashtag1 #hashtag2 ... #hashtag15
+[CTA em 1 linha: "Fale com o escritório"]
+
+[HASHTAGS — 10–15]
 ```
 
----
+### Regras da legenda
 
-## Regras de legenda (válido para carrossel e feed)
-
-- **Primeira linha**: hook — não começar com "Olá" ou "O [órgão] decidiu que..."
-  — começar com algo que gere clique no "mais"
-- **Parágrafos**: máximo 3 linhas cada no mobile
-- **Hashtags**: 10–15, misturando:
-  - 3–5 nacionais amplas: `#direito`, `#advocacia`, `#justiça`
-  - 3–5 de área: `#direitoimobiliário`, `#direitodoconsumidor`
-  - 2–3 regionais (se o escritório tem foco geográfico)
-  - 2–3 do nicho do post específico
-- **Emojis**: moderados, 2–4 na legenda inteira — nunca na primeira linha
+- Primeira linha é o GANCHO, não "Olá"
+- Parágrafos curtos (máximo 3 linhas no mobile)
+- 2–4 emojis na legenda inteira, nunca na primeira linha
+- Hashtags: 3–5 nacionais, 3–5 de área, 2–3 regionais (SC, Jaguaruna),
+  2–3 do tema específico
 
 ---
 
-## Horário sugerido
+## Horários sugeridos
 
-Para público jurídico PF no Brasil, maior engajamento geralmente em:
-- **Terça / Quarta / Quinta**: 18h30 – 20h30
-- **Domingo**: 10h – 12h (público em casa, consome mais texto)
-- **Evitar**: segunda cedo, sexta à noite, sábado inteiro
+Para público PF jurídico:
 
-Ajustar com dados reais do perfil quando houver 20+ posts publicados
-para análise.
+- **Carrossel analítico**: terça/quarta/quinta, 18h30–20h30
+- **Feed single com dado forte**: domingo 10h–12h (público em casa)
+- Evitar: segunda cedo, sexta à noite, sábado inteiro
