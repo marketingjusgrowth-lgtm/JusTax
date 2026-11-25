@@ -1,0 +1,759 @@
+<title>Exportar Posts 23/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --page-bg: #F4EFE2;
+    --page-fg: #0A3A2A;
+    --muted: #6B7A70;
+    --rule: rgba(10,58,42,.14);
+    --verde: #0A3A2A;
+    --verde-claro: #14563E;
+    --verde-escuro: #051D14;
+    --bege: #EFE6D3;
+    --bege-claro: #FBF6EA;
+    --bege-escuro: #E2D6BC;
+    --creme: #F1EBDD;
+    --dourado: #C9A24B;
+    --dourado-escuro: #9C7A33;
+    --dourado-claro: #E4C77E;
+    --dourado-mel: #8A6E2E;
+    --sage-escuro: #3B4A42;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #0E1A14;
+      --page-fg: #F1EBDD;
+      --muted: #9FB3A8;
+      --rule: rgba(241,235,221,.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #0E1A14;
+    --page-fg: #F1EBDD;
+    --muted: #9FB3A8;
+    --rule: rgba(241,235,221,.14);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font-family: "Jost", system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.55;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 80px;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--dourado-mel); font-weight: 500; }
+  .subtitle {
+    font-family: "Jost";
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .instructions {
+    background: rgba(201,162,75,0.1);
+    border-left: 2px solid var(--dourado);
+    padding: 16px 22px;
+    margin-bottom: 36px;
+    font-family: "Jost";
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--page-fg);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+  .instructions b { font-weight: 500; }
+  .instructions ol { margin: 10px 0 0; padding-left: 22px; }
+  .instructions li { margin-bottom: 6px; }
+
+  .post-group {
+    margin-bottom: 72px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .post-group:last-child { border-bottom: none; }
+
+  .post-group h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 26px;
+    margin: 0 0 6px;
+    letter-spacing: -0.005em;
+  }
+  .post-group h2 .num {
+    color: var(--dourado-mel);
+    font-style: italic;
+    margin-right: 10px;
+  }
+  .post-group .post-meta {
+    font-family: "Jost";
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .slide-row {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+  }
+
+  .slide-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .slide-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1080px;
+  }
+  .slide-label {
+    font-family: "Jost";
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .slide-label strong { color: var(--page-fg); font-weight: 500; }
+
+  .export-btn {
+    appearance: none;
+    border: 1px solid var(--verde);
+    background: transparent;
+    color: var(--verde);
+    font-family: "Jost";
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 140ms ease, color 140ms ease;
+    border-radius: 2px;
+  }
+  .export-btn:hover { background: var(--verde); color: var(--creme); }
+  .export-btn:focus-visible { outline: 2px solid var(--dourado); outline-offset: 2px; }
+  .export-btn[disabled] { opacity: 0.6; cursor: wait; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .export-btn { border-color: var(--dourado-claro); color: var(--dourado-claro); }
+    :root:not([data-theme="light"]) .export-btn:hover { background: var(--dourado-claro); color: var(--verde-escuro); }
+  }
+
+  .canvas-container {
+    display: none;
+    margin-top: 12px;
+    padding: 18px;
+    background: #FFFEF9;
+    border: 1px solid var(--rule);
+    max-width: 1080px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .canvas-container.ready { display: block; }
+  .canvas-container p {
+    font-family: "Jost";
+    font-size: 12.5px;
+    color: var(--sage-escuro);
+    margin: 0 0 12px;
+    line-height: 1.55;
+  }
+  .canvas-container p b { font-weight: 500; }
+  .canvas-container canvas, .canvas-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .canvas-container { background: #1A251F; }
+    :root:not([data-theme="light"]) .canvas-container p { color: var(--muted); }
+  }
+
+  /* ========================================================
+     SLIDE EM TAMANHO REAL 1080 × 1350
+     ======================================================== */
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-family: "Cormorant Garamond", serif;
+    color: var(--verde);
+    background: var(--bege);
+    box-shadow: 0 4px 24px rgba(10,58,42,0.12);
+    aspect-ratio: 4 / 5;
+  }
+
+  .slide .layer-gradient {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(95% 75% at 22% 14%, var(--bege-claro) 0%, var(--bege) 52%, var(--bege-escuro) 100%);
+  }
+  .slide .layer-texture {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.3;
+    background: repeating-linear-gradient(115deg, rgba(156,122,51,.22) 0px, rgba(156,122,51,.22) 1px, transparent 1px, transparent 28px);
+  }
+  .slide .layer-border {
+    position: absolute; inset: 50px; z-index: 2; pointer-events: none;
+    border: 1px solid rgba(201,162,75,.34);
+  }
+  .slide .content {
+    position: absolute; inset: 100px; z-index: 3;
+    display: flex; flex-direction: column;
+  }
+
+  .logo-area { width: 216px; aspect-ratio: 5 / 4; display: block; }
+  .logo-area img { width: 100%; height: auto; display: block; }
+
+  .hero { margin-top: 150px; display: flex; flex-direction: column; gap: 26px; }
+  .hero-eyebrow {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--dourado-mel);
+  }
+  .hero-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 82px;
+    line-height: 1.04;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--verde);
+    text-wrap: pretty;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--dourado-mel);
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.1;
+    color: var(--dourado-mel);
+    margin: 0;
+  }
+  .hero-separator {
+    width: 180px;
+    height: 2px;
+    background: var(--dourado-escuro);
+    margin-top: 14px;
+    opacity: 0.9;
+  }
+
+  .body { margin-top: 70px; display: flex; flex-direction: column; gap: 26px; }
+  .body-eyebrow {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+  }
+  .body-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--verde);
+    text-wrap: pretty;
+  }
+  .body-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--dourado-mel);
+  }
+  .body-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 22px; }
+  .body-list li {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.2;
+    padding-left: 44px;
+    position: relative;
+    color: var(--verde);
+    text-wrap: pretty;
+  }
+  .body-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.58em;
+    width: 26px;
+    height: 1px;
+    background: var(--dourado);
+  }
+  .body-list li em { font-style: italic; color: var(--dourado-mel); font-weight: 500; }
+  .body-caption {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 1.5;
+    margin-top: 15px;
+    color: var(--sage-escuro);
+    text-wrap: pretty;
+  }
+
+  .cta { margin: auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; text-align: center; flex: 1; }
+  .cta-question {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--verde);
+    text-wrap: balance;
+    max-width: 92%;
+  }
+  .cta-call {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: 0.08em;
+    color: var(--dourado-mel);
+  }
+  .cta-handle {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--dourado-mel);
+    margin-top: 15px;
+  }
+  .cta-disclaimer {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: var(--sage-escuro);
+    max-width: 78%;
+    margin-top: 20px;
+  }
+
+  .slide-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-escuro);
+    padding-top: 26px;
+  }
+  .slide-footer .oab { color: var(--dourado-mel); }
+</style>
+
+<div class="wrap">
+
+  <h1>Posts 23/11 — <em>para exportar</em></h1>
+  <p class="subtitle">Doze slides em tamanho nativo do Instagram (1080 × 1350 px).</p>
+
+  <div class="instructions">
+    <b>Como exportar cada slide como PNG:</b>
+    <ol>
+      <li>Clique em <b>"Gerar PNG"</b> em cima de cada slide.</li>
+      <li>Aparece uma imagem logo abaixo, já renderizada em 1080 × 1350.</li>
+      <li>Clique com o botão direito do mouse (ou pressione longamente no celular) e escolha <b>"Salvar imagem como…"</b>.</li>
+      <li>Nomeie no padrão <code>post-1-slide-1.png</code> e salve.</li>
+    </ol>
+    Alternativa: pressione <b>F12</b>, clique com o botão direito no elemento <code>.slide</code> desejado e use <b>"Capture node screenshot"</b> — já baixa em 1080 × 1350.
+  </div>
+
+  <!-- ================= POST 1 ================= -->
+  <section class="post-group" id="post-1">
+    <h2><span class="num">01</span>Compra e venda — três pontos que não podem ficar de fora</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Quarta 26/11 · 19h</div>
+
+    <div class="slide-row">
+
+      <!-- Slide 1.1 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 1</strong> · Capa</div>
+          <button class="export-btn" data-slide="s1-1">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s1-1">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="hero">
+              <div class="hero-eyebrow">Compra e venda de imóvel</div>
+              <h3 class="hero-title">Três pontos que não podem ficar de fora da <em>conferência.</em></h3>
+              <p class="hero-sub">Antes de assinar, três frentes precisam de resposta clara.</p>
+              <div class="hero-separator"></div>
+            </div>
+            <div class="slide-footer"><span>Imobiliário</span><span class="oab">OAB/SC 25.954 · 01 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s1-1"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 1.2 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 2</strong> · Os 3 pontos</div>
+          <button class="export-btn" data-slide="s1-2">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s1-2">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="body">
+              <div class="body-eyebrow">O que conferir</div>
+              <ul class="body-list">
+                <li>Quem é efetivamente o <em>proprietário</em> — e se pode vender</li>
+                <li>Se existem <em>dívidas, ônus ou irregularidades</em> no imóvel</li>
+                <li>Se o contrato <em>protege</em> o pagamento, a posse, o registro e a responsabilização do vendedor</li>
+              </ul>
+            </div>
+            <div class="slide-footer"><span>Imobiliário</span><span class="oab">02 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s1-2"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 1.3 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 3</strong> · Por que importa</div>
+          <button class="export-btn" data-slide="s1-3">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s1-3">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="body">
+              <div class="body-eyebrow">Por que importa</div>
+              <h3 class="body-title">Qualquer um destes pontos <em>compromete a compra</em> depois da assinatura.</h3>
+              <p class="body-caption">Negócios imobiliários mal conferidos viram litígio — e o que seria uma compra vira um problema de anos.</p>
+            </div>
+            <div class="slide-footer"><span>Imobiliário</span><span class="oab">03 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s1-3"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 1.4 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 4</strong> · CTA</div>
+          <button class="export-btn" data-slide="s1-4">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s1-4">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="cta">
+              <h3 class="cta-question">Antes de assinar, uma análise jurídica.</h3>
+              <div class="cta-call">Fale com o escritório</div>
+              <div class="cta-handle">@dilneiborgesadvocacia</div>
+              <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+            </div>
+            <div class="slide-footer"><span>Imobiliário</span><span class="oab">04 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s1-4"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= POST 2 ================= -->
+  <section class="post-group" id="post-2">
+    <h2><span class="num">02</span>Contrato de gaveta — o IPTU continua com quem está na matrícula</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Quinta 27/11 · 19h</div>
+
+    <div class="slide-row">
+
+      <!-- Slide 2.1 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 1</strong> · Capa</div>
+          <button class="export-btn" data-slide="s2-1">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s2-1">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="hero">
+              <div class="hero-eyebrow">STJ · Tema 122 reforçado</div>
+              <h3 class="hero-title">Vendeu seu imóvel só com <em>contrato de gaveta</em>?</h3>
+              <p class="hero-sub">O IPTU ainda é seu.</p>
+              <div class="hero-separator"></div>
+            </div>
+            <div class="slide-footer"><span>Tributário · Imobiliário</span><span class="oab">OAB/SC 25.954 · 01 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s2-1"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 2.2 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 2</strong> · A decisão</div>
+          <button class="export-btn" data-slide="s2-2">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s2-2">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="body">
+              <div class="body-eyebrow">O que o STJ disse</div>
+              <h3 class="body-title">A cessão particular da posse <em>não</em> afasta a responsabilidade do proprietário registral.</h3>
+              <p class="body-caption">Reforço do Tema 122 pela 2ª Turma em novembro de 2026. Mesmo que o município saiba da transferência, a dívida permanece com quem está na matrícula.</p>
+            </div>
+            <div class="slide-footer"><span>Tributário · Imobiliário</span><span class="oab">02 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s2-2"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 2.3 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 3</strong> · Se você…</div>
+          <button class="export-btn" data-slide="s2-3">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s2-3">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="body">
+              <div class="body-eyebrow">Se você…</div>
+              <ul class="body-list">
+                <li>Vendeu um imóvel por <em>contrato particular</em> ou gaveta</li>
+                <li>Nunca formalizou a transferência da matrícula</li>
+                <li>Continua recebendo boletos de IPTU após a venda</li>
+              </ul>
+              <p class="body-caption">A única saída é regularizar a transferência no cartório de registro.</p>
+            </div>
+            <div class="slide-footer"><span>Tributário · Imobiliário</span><span class="oab">03 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s2-3"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 2.4 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 4</strong> · CTA</div>
+          <button class="export-btn" data-slide="s2-4">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s2-4">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="cta">
+              <h3 class="cta-question">Precisa regularizar uma venda antiga?</h3>
+              <div class="cta-call">Fale com o escritório</div>
+              <div class="cta-handle">@dilneiborgesadvocacia</div>
+              <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+            </div>
+            <div class="slide-footer"><span>Tributário · Imobiliário</span><span class="oab">04 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s2-4"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= POST 3 ================= -->
+  <section class="post-group" id="post-3">
+    <h2><span class="num">03</span>Imóvel em Área de Preservação Permanente — o que pode e o que não pode</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Domingo 30/11 · 10h30</div>
+
+    <div class="slide-row">
+
+      <!-- Slide 3.1 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 1</strong> · Capa</div>
+          <button class="export-btn" data-slide="s3-1">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s3-1">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="hero">
+              <div class="hero-eyebrow">Imóvel em APP</div>
+              <h3 class="hero-title">Seu terreno tem <em>mata ciliar, nascente ou duna</em>?</h3>
+              <p class="hero-sub">Então parte dele é APP — e isso muda o que você pode fazer.</p>
+              <div class="hero-separator"></div>
+            </div>
+            <div class="slide-footer"><span>Ambiental · Imobiliário</span><span class="oab">OAB/SC 25.954 · 01 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s3-1"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 3.2 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 2</strong> · O que é APP</div>
+          <button class="export-btn" data-slide="s3-2">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s3-2">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="body">
+              <div class="body-eyebrow">O que é APP</div>
+              <h3 class="body-title">Área protegida pelo Código Florestal por sua <em>função ambiental.</em></h3>
+              <ul class="body-list">
+                <li>Faixas marginais de rios, lagos e lagoas</li>
+                <li>Nascentes (raio de <em>50 metros</em>)</li>
+                <li>Dunas, restingas e manguezais</li>
+                <li>Topos de morros e encostas acima de 45°</li>
+              </ul>
+              <p class="body-caption">Base legal: Código Florestal (Lei 12.651/2012).</p>
+            </div>
+            <div class="slide-footer"><span>Ambiental · Imobiliário</span><span class="oab">02 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s3-2"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 3.3 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 3</strong> · O que muda</div>
+          <button class="export-btn" data-slide="s3-3">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s3-3">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="body">
+              <div class="body-eyebrow">O que muda para você</div>
+              <ul class="body-list">
+                <li><em>Não pode</em> construir, cortar vegetação ou impermeabilizar o solo sem autorização</li>
+                <li><em>Pode</em>, em casos específicos: utilidade pública, baixo impacto ou áreas rurais consolidadas antes de 2008</li>
+                <li><em>Deve</em> registrar a APP no CAR e manter a vegetação preservada</li>
+              </ul>
+              <p class="body-caption">Descumprir gera multa, embargo e obrigação de recuperar a área.</p>
+            </div>
+            <div class="slide-footer"><span>Ambiental · Imobiliário</span><span class="oab">03 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s3-3"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+      <!-- Slide 3.4 -->
+      <div class="slide-block">
+        <div class="slide-head">
+          <div class="slide-label"><strong>Slide 4</strong> · CTA</div>
+          <button class="export-btn" data-slide="s3-4">Gerar PNG</button>
+        </div>
+        <div class="slide" id="s3-4">
+          <div class="layer-gradient"></div><div class="layer-texture"></div><div class="layer-border"></div>
+          <div class="content">
+            <div class="logo-area"><img src="logo-claro.webp" alt="Dilnei Borges Advocacia" crossorigin="anonymous"></div>
+            <div class="cta">
+              <h3 class="cta-question">Dúvida se o seu imóvel tem APP?</h3>
+              <div class="cta-call">Fale com o escritório</div>
+              <div class="cta-handle">@dilneiborgesadvocacia</div>
+              <div class="cta-disclaimer">Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+            </div>
+            <div class="slide-footer"><span>Ambiental · Imobiliário</span><span class="oab">04 / 04</span></div>
+          </div>
+        </div>
+        <div class="canvas-container" id="c-s3-4"><p><b>Clique com o botão direito</b> → "Salvar imagem como…"</p></div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll('.export-btn').forEach(function(btn){
+  btn.addEventListener('click', async function(){
+    var slideId = btn.getAttribute('data-slide');
+    var slide = document.getElementById(slideId);
+    var container = document.getElementById('c-' + slideId);
+    if (!slide || !container) return;
+
+    var original = btn.textContent;
+    btn.textContent = 'Gerando…';
+    btn.disabled = true;
+
+    try {
+      var canvas = await html2canvas(slide, {
+        width: 1080,
+        height: 1350,
+        scale: 1,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null
+      });
+
+      // Limpar container e inserir a imagem gerada
+      // Mantém o parágrafo de instrução no topo
+      var p = container.querySelector('p');
+      container.innerHTML = '';
+      if (p) container.appendChild(p);
+
+      // Converte canvas para img para que o right-click funcione universalmente
+      var img = document.createElement('img');
+      img.src = canvas.toDataURL('image/png');
+      img.alt = 'Slide ' + slideId;
+      container.appendChild(img);
+      container.classList.add('ready');
+
+      btn.textContent = 'Pronto ✓';
+      // Rolar para a imagem gerada
+      setTimeout(function(){ img.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 2800);
+    } catch (e) {
+      console.error(e);
+      btn.textContent = 'Erro — veja F12';
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 2800);
+    }
+  });
+});
+</script>
