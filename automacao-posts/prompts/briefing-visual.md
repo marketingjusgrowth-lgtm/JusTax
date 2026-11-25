@@ -141,9 +141,8 @@ largura ~20% da artboard.
 ### 5. (removido) — a logo oficial já tem presença suficiente, sem precisar de marca-d'água adicional.
 
 ### 6. OAB/SC
-No footer, em caixa alta, letter-spacing aberto. **PENDENTE: confirmar número**
-— o screenshot do perfil mostra 23.954, mas o design-doc tem 25.954. Perguntar
-ao advogado qual é o correto.
+No footer, em caixa alta, letter-spacing aberto. **Número confirmado pelo
+advogado: OAB/SC 25.954.**
 
 ---
 

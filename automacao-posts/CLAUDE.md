@@ -6,7 +6,7 @@
 ## O escritório
 
 - **Nome**: Dilnei Borges Advocacia
-- **OAB**: SC 23.954
+- **OAB**: SC 25.954
 - **Natureza**: escritório de advocacia (atuação multidisciplinar, sem nicho único)
 - **Áreas de maior rotatividade atual**: Civil, Tributário, Imobiliário, Ambiental
 - **Outras áreas atendidas**: Empresarial / Societário, Consumidor, Sucessões

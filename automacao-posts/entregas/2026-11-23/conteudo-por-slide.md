@@ -16,7 +16,7 @@ contrastante (`#8A6E2E` sobre bege, `#E4C77E` sobre verde).
 - **Título hero**: `Três pontos que não podem ficar de fora da *conferência.*`
 - **Subtítulo italic**: `Antes de assinar, três frentes precisam de resposta clara.`
 - **Footer esquerda**: `Imobiliário`
-- **Footer direita**: `OAB/SC [número] · 01 / 04`
+- **Footer direita**: `OAB/SC 25.954 · 01 / 04`
 
 ### Slide 2 — Os 3 pontos
 - **Eyebrow**: `O QUE CONFERIR`
