@@ -1,0 +1,662 @@
+<title>Guia Aplicação — Posts 23/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --page-bg: #F4EFE2;
+    --page-fg: #0A3A2A;
+    --muted: #6B7A70;
+    --rule: rgba(10,58,42,.14);
+    --verde: #0A3A2A;
+    --bege: #EFE6D3;
+    --creme: #F1EBDD;
+    --dourado: #C9A24B;
+    --dourado-escuro: #9C7A33;
+    --dourado-mel: #8A6E2E;
+    --sage-escuro: #3B4A42;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #0E1A14;
+      --page-fg: #F1EBDD;
+      --muted: #9FB3A8;
+      --rule: rgba(241,235,221,.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #0E1A14;
+    --page-fg: #F1EBDD;
+    --muted: #9FB3A8;
+    --rule: rgba(241,235,221,.14);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font-family: "Jost", system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 80px;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4.6vw, 44px);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--dourado-mel); font-weight: 500; }
+  .intro {
+    font-family: "Jost";
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .instructions {
+    background: rgba(201,162,75,0.1);
+    border-left: 2px solid var(--dourado);
+    padding: 16px 22px;
+    margin-bottom: 44px;
+    font-family: "Jost";
+    font-size: 13.5px;
+    color: var(--page-fg);
+    line-height: 1.65;
+  }
+  .instructions ol { margin: 10px 0 0; padding-left: 22px; }
+  .instructions li { margin-bottom: 7px; }
+  .instructions b { font-weight: 500; }
+
+  .post {
+    margin-bottom: 56px;
+  }
+  .post h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin: 0 0 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .post h2 .num {
+    color: var(--dourado-mel);
+    font-style: italic;
+    margin-right: 10px;
+  }
+  .post-meta {
+    font-family: "Jost";
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 10px 0 24px;
+  }
+
+  .slide-section {
+    margin-bottom: 30px;
+    padding: 18px 20px;
+    background: rgba(201,162,75,0.04);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .slide-section h3 {
+    font-family: "Jost";
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+    margin: 0 0 14px;
+  }
+
+  .field {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 10px 14px;
+    align-items: start;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(10,58,42,0.08);
+    font-family: "Jost";
+    font-size: 14px;
+  }
+  .field:last-child { border-bottom: none; }
+  .field .label {
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 4px;
+  }
+  .field .value {
+    font-family: "Jost";
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--page-fg);
+    font-weight: 300;
+    text-wrap: pretty;
+    min-width: 0;
+  }
+  .field .value em {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: var(--dourado-mel);
+    font-weight: 500;
+  }
+  .field ul {
+    margin: 0;
+    padding-left: 16px;
+    list-style: none;
+  }
+  .field ul li {
+    margin-bottom: 7px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .field ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--dourado);
+  }
+  .copy-btn {
+    appearance: none;
+    border: 1px solid var(--verde);
+    background: transparent;
+    color: var(--verde);
+    font-family: "Jost";
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: var(--verde); color: var(--creme); }
+  .copy-btn.ok { background: var(--verde); color: var(--creme); border-color: var(--verde); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .copy-btn { border-color: var(--muted); color: var(--muted); }
+    :root:not([data-theme="light"]) .copy-btn:hover { background: var(--muted); color: var(--page-bg); }
+    :root:not([data-theme="light"]) .slide-section { background: rgba(201,162,75,0.08); }
+  }
+
+  @media (max-width: 580px) {
+    .field { grid-template-columns: 1fr; gap: 6px; }
+    .field .copy-btn { justify-self: start; }
+  }
+
+  .note {
+    font-family: "Jost";
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+  }
+</style>
+
+<div class="wrap">
+  <h1>Posts 23/11 — <em>guia de aplicação</em></h1>
+  <p class="intro">Abra este guia ao lado do seu template no Claude Design e vá aplicando o conteúdo campo a campo. Palavras marcadas com <em>itálico dourado</em> devem receber o tratamento italic + cor dourada contrastante.</p>
+
+  <div class="instructions">
+    <b>Como usar:</b>
+    <ol>
+      <li>Abra seu template <b>Instagram+Advocacia+Dilnei+Borges</b> no Claude Design</li>
+      <li>Para cada post abaixo, use a artboard do formato correspondente (capa + conteúdo + CTA)</li>
+      <li>Clique no botão <b>Copiar</b> ao lado de cada campo e cole na área correspondente do slide</li>
+      <li>Nas palavras marcadas <em>em itálico</em>, aplique Cormorant Garamond <em>italic</em> na cor dourada (<code>#8A6E2E</code> sobre bege)</li>
+      <li>Exporte cada slide em PNG 1080 × 1350 direto do Claude Design</li>
+      <li>Publique no horário sugerido</li>
+    </ol>
+  </div>
+
+  <!-- ================ POST 1 ================ -->
+  <section class="post" id="post-1">
+    <h2><span class="num">01</span>Compra e venda — três pontos que não podem ficar de fora</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Quarta 26/11 · 19h</div>
+
+    <!-- Slide 1 -->
+    <div class="slide-section">
+      <h3>Slide 1 · Capa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Compra e venda de imóvel</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título hero</div>
+        <div class="value" data-copy>Três pontos que não podem ficar de fora da <em>conferência.</em></div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Subtítulo italic</div>
+        <div class="value" data-copy>Antes de assinar, três frentes precisam de resposta clara.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Imobiliário  ·  OAB/SC 25.954  ·  01 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-section">
+      <h3>Slide 2 · O que conferir</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que conferir</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy>Quem é efetivamente o <em>proprietário</em> — e se pode vender
+Se existem <em>dívidas, ônus ou irregularidades</em> no imóvel
+Se o contrato <em>protege</em> o pagamento, a posse, o registro e a responsabilização do vendedor</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Imobiliário  ·  02 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-section">
+      <h3>Slide 3 · Por que importa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Por que importa</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título</div>
+        <div class="value" data-copy>Qualquer um destes pontos <em>compromete a compra</em> depois da assinatura.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>Negócios imobiliários mal conferidos viram litígio — e o que seria uma compra vira um problema de anos.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Imobiliário  ·  03 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-section">
+      <h3>Slide 4 · CTA</h3>
+      <div class="field">
+        <div class="label">Pergunta italic</div>
+        <div class="value" data-copy>Antes de assinar, uma análise jurídica.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Chamada</div>
+        <div class="value" data-copy>Fale com o escritório</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Handle @</div>
+        <div class="value" data-copy>@dilneiborgesadvocacia</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Disclaimer</div>
+        <div class="value" data-copy>Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="slide-section">
+      <h3>Legenda (pronta para colar no Instagram)</h3>
+      <div class="field">
+        <div class="label">Texto completo</div>
+        <div class="value" data-copy>Antes de assinar o contrato de compra e venda de um imóvel, três pontos não podem ficar fora da conferência.
+
+→ Quem é efetivamente o proprietário — e se pode vender
+→ Se existem dívidas, ônus ou irregularidades no imóvel
+→ Se o contrato protege o pagamento, a posse, o registro e a responsabilização do vendedor
+
+Negócios imobiliários mal conferidos viram litígio. O que seria uma compra pode virar um problema que leva anos para resolver.
+
+Pensando em comprar? Fale com o escritório antes de assinar.
+
+#direito #advocacia #advogado #direitoimobiliario #compradeimovel #contratodecompraevenda #imovel #escritura #matricula #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #imobiliario</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ POST 2 ================ -->
+  <section class="post" id="post-2">
+    <h2><span class="num">02</span>Contrato de gaveta — o IPTU continua com quem está na matrícula</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Quinta 27/11 · 19h</div>
+
+    <!-- Slide 1 -->
+    <div class="slide-section">
+      <h3>Slide 1 · Capa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>STJ · Tema 122 reforçado</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título hero</div>
+        <div class="value" data-copy>Vendeu seu imóvel só com <em>contrato de gaveta</em>?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Subtítulo italic</div>
+        <div class="value" data-copy>O IPTU ainda é seu.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Tributário · Imobiliário  ·  OAB/SC 25.954  ·  01 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-section">
+      <h3>Slide 2 · A decisão</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que o STJ disse</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título</div>
+        <div class="value" data-copy>A cessão particular da posse <em>não</em> afasta a responsabilidade do proprietário registral.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>Reforço do Tema 122 pela 2ª Turma em novembro de 2026. Mesmo que o município saiba da transferência, a dívida permanece com quem está na matrícula.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Tributário · Imobiliário  ·  02 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-section">
+      <h3>Slide 3 · Se você…</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Se você…</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy>Vendeu um imóvel por <em>contrato particular</em> ou gaveta
+Nunca formalizou a transferência da matrícula
+Continua recebendo boletos de IPTU após a venda</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>A única saída é regularizar a transferência no cartório de registro.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Tributário · Imobiliário  ·  03 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-section">
+      <h3>Slide 4 · CTA</h3>
+      <div class="field">
+        <div class="label">Pergunta italic</div>
+        <div class="value" data-copy>Precisa regularizar uma venda antiga?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Chamada</div>
+        <div class="value" data-copy>Fale com o escritório</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Handle @</div>
+        <div class="value" data-copy>@dilneiborgesadvocacia</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Disclaimer</div>
+        <div class="value" data-copy>Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="slide-section">
+      <h3>Legenda (pronta para colar no Instagram)</h3>
+      <div class="field">
+        <div class="label">Texto completo</div>
+        <div class="value" data-copy>Vendeu um imóvel só com contrato particular, sem formalizar a transferência no cartório? A conta do IPTU pode continuar chegando pra você — e o STJ acaba de reforçar esse entendimento.
+
+A 2ª Turma do Superior Tribunal de Justiça decidiu, em novembro de 2026, que a cessão particular da posse não afasta a responsabilidade do proprietário registral pelo IPTU. Mesmo que o município tenha sido comunicado sobre a venda, quem está na matrícula continua sendo o responsável.
+
+É a aplicação do Tema 122, que já vinha sendo seguido: quem aparece no registro responde pelo imposto, até que a transferência seja formalizada.
+
+Se você vendeu e nunca escriturou, duas coisas valem a pena:
+
+→ Levantar se há débitos abertos no seu nome
+→ Buscar a regularização da transferência via cartório
+
+Fale com o escritório antes que a cobrança vire execução.
+
+#direito #advocacia #advogado #iptu #direitotributario #direitoimobiliario #stj #contratodegaveta #compraevenda #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #regularizacao</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ POST 3 ================ -->
+  <section class="post" id="post-3">
+    <h2><span class="num">03</span>Imóvel em Área de Preservação Permanente — o que pode e o que não pode</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Domingo 30/11 · 10h30</div>
+
+    <!-- Slide 1 -->
+    <div class="slide-section">
+      <h3>Slide 1 · Capa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Imóvel em APP</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título hero</div>
+        <div class="value" data-copy>Seu terreno tem <em>mata ciliar, nascente ou duna</em>?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Subtítulo italic</div>
+        <div class="value" data-copy>Então parte dele é APP — e isso muda o que você pode fazer.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Ambiental · Imobiliário  ·  OAB/SC 25.954  ·  01 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-section">
+      <h3>Slide 2 · O que é APP</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que é APP</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título</div>
+        <div class="value" data-copy>Área protegida pelo Código Florestal por sua <em>função ambiental.</em></div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (4 itens)</div>
+        <div class="value" data-copy>Faixas marginais de rios, lagos e lagoas
+Nascentes (raio de <em>50 metros</em>)
+Dunas, restingas e manguezais
+Topos de morros e encostas acima de 45°</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>Base legal: Código Florestal (Lei 12.651/2012).</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Ambiental · Imobiliário  ·  02 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-section">
+      <h3>Slide 3 · O que muda para você</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que muda para você</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy><em>Não pode</em> construir, cortar vegetação ou impermeabilizar o solo sem autorização
+<em>Pode</em>, em casos específicos: utilidade pública, baixo impacto ou áreas rurais consolidadas antes de 2008
+<em>Deve</em> registrar a APP no CAR e manter a vegetação preservada</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>Descumprir gera multa, embargo e obrigação de recuperar a área.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Ambiental · Imobiliário  ·  03 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-section">
+      <h3>Slide 4 · CTA</h3>
+      <div class="field">
+        <div class="label">Pergunta italic</div>
+        <div class="value" data-copy>Dúvida se o seu imóvel tem APP?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Chamada</div>
+        <div class="value" data-copy>Fale com o escritório</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Handle @</div>
+        <div class="value" data-copy>@dilneiborgesadvocacia</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Disclaimer</div>
+        <div class="value" data-copy>Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="slide-section">
+      <h3>Legenda (pronta para colar no Instagram)</h3>
+      <div class="field">
+        <div class="label">Texto completo</div>
+        <div class="value" data-copy>Terreno com mata ciliar, nascente, duna, restinga ou manguezal? Então parte dele é APP (Área de Preservação Permanente) — e isso muda o que você pode fazer no seu imóvel.
+
+APP é área protegida pelo Código Florestal (Lei 12.651/2012) por sua função ambiental: preservar água, biodiversidade e solo. Entram nessa categoria:
+
+→ Faixas marginais de rios, lagos e lagoas (de 30 a 500 metros, conforme a largura do curso d'água)
+→ Nascentes e olhos d'água (raio de 50 metros)
+→ Dunas, restingas e manguezais
+→ Topos de morros e encostas com inclinação acima de 45°
+
+O que o proprietário precisa saber:
+
+→ Não pode construir, cortar vegetação ou impermeabilizar o solo em APP sem autorização
+→ Pode, em casos específicos: utilidade pública, interesse social, atividades de baixo impacto, ou nas áreas rurais já consolidadas antes de 22/07/2008
+→ Deve registrar a APP no CAR e manter a vegetação preservada
+
+Descumprir gera multa, embargo e obrigação de recuperar a área. Em casos mais graves, pode caracterizar crime ambiental.
+
+Pensando em construir, cortar árvore ou regularizar um imóvel com APP? Fale com o escritório antes.
+
+#direito #advocacia #advogado #direitoambiental #ambiental #app #areadepreservacao #codigoflorestal #imovelrural #matasciliar #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #imobiliario</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(function(btn){
+  btn.addEventListener('click', async function(){
+    var valueEl = btn.parentElement.querySelector('[data-copy]');
+    if (!valueEl) return;
+    // Pega o texto plano, convertendo os <em> em marcação para o usuário saber
+    var html = valueEl.innerHTML;
+    var text = html.replace(/<em[^>]*>/gi, '*').replace(/<\/em>/gi, '*')
+                   .replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+    // Decodificar entidades HTML comuns
+    var tmp = document.createElement('div');
+    tmp.innerHTML = text;
+    text = tmp.textContent;
+
+    var original = btn.textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('ok');
+    } catch(e) {
+      // Fallback: seleciona o elemento
+      var range = document.createRange();
+      range.selectNode(valueEl);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Selecionado';
+      btn.classList.add('ok');
+    }
+    setTimeout(function(){
+      btn.textContent = original;
+      btn.classList.remove('ok');
+    }, 1800);
+  });
+});
+</script>
