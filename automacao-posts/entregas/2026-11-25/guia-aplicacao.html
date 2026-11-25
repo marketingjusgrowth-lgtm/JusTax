@@ -1,0 +1,636 @@
+<title>Guia Aplicação — Posts 25/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --page-bg: #F4EFE2;
+    --page-fg: #0A3A2A;
+    --muted: #6B7A70;
+    --rule: rgba(10,58,42,.14);
+    --verde: #0A3A2A;
+    --bege: #EFE6D3;
+    --creme: #F1EBDD;
+    --dourado: #C9A24B;
+    --dourado-escuro: #9C7A33;
+    --dourado-mel: #8A6E2E;
+    --sage-escuro: #3B4A42;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #0E1A14;
+      --page-fg: #F1EBDD;
+      --muted: #9FB3A8;
+      --rule: rgba(241,235,221,.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #0E1A14;
+    --page-fg: #F1EBDD;
+    --muted: #9FB3A8;
+    --rule: rgba(241,235,221,.14);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font-family: "Jost", system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 80px;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4.6vw, 44px);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--dourado-mel); font-weight: 500; }
+  .intro {
+    font-family: "Jost";
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .instructions {
+    background: rgba(201,162,75,0.1);
+    border-left: 2px solid var(--dourado);
+    padding: 16px 22px;
+    margin-bottom: 44px;
+    font-family: "Jost";
+    font-size: 13.5px;
+    color: var(--page-fg);
+    line-height: 1.65;
+  }
+  .instructions ol { margin: 10px 0 0; padding-left: 22px; }
+  .instructions li { margin-bottom: 7px; }
+  .instructions b { font-weight: 500; }
+
+  .post { margin-bottom: 56px; }
+  .post h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin: 0 0 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .post h2 .num { color: var(--dourado-mel); font-style: italic; margin-right: 10px; }
+  .post-meta {
+    font-family: "Jost";
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 10px 0 24px;
+  }
+
+  .slide-section {
+    margin-bottom: 30px;
+    padding: 18px 20px;
+    background: rgba(201,162,75,0.04);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .slide-section h3 {
+    font-family: "Jost";
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dourado-escuro);
+    margin: 0 0 14px;
+  }
+
+  .field {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 10px 14px;
+    align-items: start;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(10,58,42,0.08);
+    font-family: "Jost";
+    font-size: 14px;
+  }
+  .field:last-child { border-bottom: none; }
+  .field .label {
+    font-family: "Jost";
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 4px;
+  }
+  .field .value {
+    font-family: "Jost";
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--page-fg);
+    font-weight: 300;
+    text-wrap: pretty;
+    min-width: 0;
+    white-space: pre-wrap;
+  }
+  .field .value em {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: var(--dourado-mel);
+    font-weight: 500;
+  }
+  .copy-btn {
+    appearance: none;
+    border: 1px solid var(--verde);
+    background: transparent;
+    color: var(--verde);
+    font-family: "Jost";
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: var(--verde); color: var(--creme); }
+  .copy-btn.ok { background: var(--verde); color: var(--creme); border-color: var(--verde); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .copy-btn { border-color: var(--muted); color: var(--muted); }
+    :root:not([data-theme="light"]) .copy-btn:hover { background: var(--muted); color: var(--page-bg); }
+    :root:not([data-theme="light"]) .slide-section { background: rgba(201,162,75,0.08); }
+  }
+
+  @media (max-width: 580px) {
+    .field { grid-template-columns: 1fr; gap: 6px; }
+    .field .copy-btn { justify-self: start; }
+  }
+</style>
+
+<div class="wrap">
+  <h1>Posts 25/11 — <em>guia de aplicação</em></h1>
+  <p class="intro">Abra este guia ao lado do seu template no Claude Design e vá aplicando o conteúdo campo a campo. Palavras marcadas <em>em itálico dourado</em> devem receber Cormorant italic + cor dourada contrastante.</p>
+
+  <div class="instructions">
+    <b>Como usar:</b>
+    <ol>
+      <li>Abra seu template <b>Instagram+Advocacia+Dilnei+Borges</b> no Claude Design</li>
+      <li>Para cada post abaixo, use uma artboard do padrão "capa + conteúdo + CTA"</li>
+      <li>Clique em <b>Copiar</b> ao lado de cada campo e cole no slide</li>
+      <li>Palavras em <em>itálico dourado</em> → Cormorant italic + cor <code>#8A6E2E</code> sobre bege</li>
+      <li>Exporte cada slide em PNG 1080 × 1350 nativo do Claude Design</li>
+      <li>Publique no horário sugerido</li>
+    </ol>
+  </div>
+
+  <!-- ================ POST 1 ================ -->
+  <section class="post" id="post-1">
+    <h2><span class="num">01</span>TJSC — imóvel da família vs dívida da empresa</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Quarta 26/11 · 19h</div>
+
+    <!-- Slide 1 -->
+    <div class="slide-section">
+      <h3>Slide 1 · Capa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>TJSC · 8ª Câmara Cível</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título hero</div>
+        <div class="value" data-copy>Deu o imóvel da família em <em>garantia</em> de empréstimo da empresa?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Subtítulo italic</div>
+        <div class="value" data-copy>O TJSC acaba de proteger quem está nessa situação.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Civil · Imobiliário  ·  OAB/SC 25.954  ·  01 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-section">
+      <h3>Slide 2 · A decisão</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que o TJSC disse</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título</div>
+        <div class="value" data-copy>O imóvel oferecido como <em>garantia hipotecária</em> da dívida da empresa não pode ser penhorado sem prova de benefício familiar.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>8ª Câmara Cível, decisão unânime em 24/11/2026. Aplicou o Tema Repetitivo 1.261 do STJ.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Civil · Imobiliário  ·  02 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-section">
+      <h3>Slide 3 · O que muda</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que muda para você</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy>O ônus da prova agora é do <em>credor</em> — ele é quem precisa mostrar que a dívida beneficiou a família
+Imóvel residencial oferecido só como garantia da empresa segue <em>protegido</em> pela Lei 8.009/90
+Vale também para imóveis dados em aval ou hipoteca empresarial</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>A proteção do bem de família foi ampliada para alcançar casos antes considerados vulneráveis.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Civil · Imobiliário  ·  03 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-section">
+      <h3>Slide 4 · CTA</h3>
+      <div class="field">
+        <div class="label">Pergunta italic</div>
+        <div class="value" data-copy>Está nessa situação?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Chamada</div>
+        <div class="value" data-copy>Fale com o escritório</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Handle @</div>
+        <div class="value" data-copy>@dilneiborgesadvocacia</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Disclaimer</div>
+        <div class="value" data-copy>Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="slide-section">
+      <h3>Legenda (pronta para o Instagram)</h3>
+      <div class="field">
+        <div class="label">Texto completo</div>
+        <div class="value" data-copy>Deu o imóvel da família em garantia de empréstimo da sua empresa? Essa semana o TJSC trouxe uma decisão que muda o jogo para quem está nessa situação.
+
+A 8ª Câmara Cível do Tribunal de Justiça de Santa Catarina decidiu, por unanimidade em 24/11/2026, que o imóvel oferecido como garantia hipotecária de dívida empresarial NÃO pode ser penhorado sem prova de que a dívida beneficiou a família do sócio.
+
+O tribunal aplicou o Tema Repetitivo 1.261 do STJ: o ônus da prova é do credor. Quem cobra é que precisa mostrar o benefício familiar — não é o proprietário que tem de provar o contrário.
+
+Na prática, isso significa:
+
+→ A proteção do bem de família (Lei 8.009/90) alcança também o imóvel dado em garantia da empresa
+→ Vale para hipoteca, aval e outras formas de garantia
+→ Credor sem prova de benefício familiar não consegue a penhora
+
+Se você está nessa situação — dívida empresarial em cobrança, com imóvel seu em garantia — vale olhar o caso com cuidado.
+
+Fale com o escritório.
+
+#direito #advocacia #advogado #tjsc #direitocivil #direitoimobiliario #bemdefamilia #hipoteca #empresarial #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #protecaopatrimonial</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ POST 2 ================ -->
+  <section class="post" id="post-2">
+    <h2><span class="num">02</span>Terreno de marinha — o imóvel perto da costa</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Quinta 27/11 · 19h</div>
+
+    <!-- Slide 1 -->
+    <div class="slide-section">
+      <h3>Slide 1 · Capa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Terreno de marinha · Patrimônio da União</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título hero</div>
+        <div class="value" data-copy>Seu imóvel fica <em>próximo à costa</em>?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Subtítulo italic</div>
+        <div class="value" data-copy>Pode ser terreno de marinha — e isso muda as obrigações.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Imobiliário · Tributário  ·  OAB/SC 25.954  ·  01 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-section">
+      <h3>Slide 2 · O que é</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que é</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título</div>
+        <div class="value" data-copy>Faixa de 33 metros a partir da <em>preamar média de 1831</em> — sob domínio da União.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy>Alcança imóveis à beira-mar, à beira de lagoas salgadas e em trechos de rios com influência de maré
+A União é a dona; o ocupante tem apenas o direito de uso (foreiro ou ocupante)
+Registro e gestão na Secretaria do Patrimônio da União (<em>SPU</em>)</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Imobiliário · Tributário  ·  02 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-section">
+      <h3>Slide 3 · O que muda</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>O que muda para você</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy>Pagamento anual de <em>foro</em> (0,6% do valor do domínio pleno) ou <em>taxa de ocupação</em>
+Na venda ou transferência, incide <em>laudêmio</em> de 5% sobre o valor venal
+Regularização junto à SPU é obrigatória para financiamento, venda ou partilha sem transtorno</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>Jaguaruna e todo o litoral de SC concentram muitos imóveis nessa situação.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Imobiliário · Tributário  ·  03 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-section">
+      <h3>Slide 4 · CTA</h3>
+      <div class="field">
+        <div class="label">Pergunta italic</div>
+        <div class="value" data-copy>Dúvida sobre a situação do seu imóvel?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Chamada</div>
+        <div class="value" data-copy>Fale com o escritório</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Handle @</div>
+        <div class="value" data-copy>@dilneiborgesadvocacia</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Disclaimer</div>
+        <div class="value" data-copy>Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="slide-section">
+      <h3>Legenda (pronta para o Instagram)</h3>
+      <div class="field">
+        <div class="label">Texto completo</div>
+        <div class="value" data-copy>Imóvel próximo à costa? Tem grande chance de estar em terreno de marinha — e muita gente só descobre isso na hora de vender, financiar ou receber de herança.
+
+Terreno de marinha é a faixa de 33 metros contados a partir da preamar média de 1831, sob domínio da União. Alcança imóveis à beira-mar, à beira de lagoas salgadas e em trechos de rios com influência de maré.
+
+Quem tem imóvel nessa faixa precisa saber:
+
+→ A União é a dona do terreno; o ocupante tem direito de uso (foreiro ou ocupante)
+→ Pagamento anual de foro (0,6% do valor do domínio pleno) ou taxa de ocupação
+→ Na venda ou transferência, incide laudêmio de 5% sobre o valor venal
+→ A regularização junto à SPU é obrigatória para financiamento, venda ou partilha sem transtorno
+
+O litoral de Santa Catarina — e Jaguaruna em particular — concentra muitos imóveis nessa situação. Não é raro surpreender a família em um inventário ou atrasar uma venda importante.
+
+Comprou, herdou ou vai vender imóvel na beira d'água? Vale verificar a situação na SPU antes.
+
+Fale com o escritório.
+
+#direito #advocacia #advogado #terrenodemarinha #spu #patrimoniodauniao #direitoimobiliario #imovellitoral #foro #laudemio #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #litoral</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ POST 3 ================ -->
+  <section class="post" id="post-3">
+    <h2><span class="num">03</span>Herança com dívidas — o que o herdeiro precisa saber</h2>
+    <div class="post-meta">Carrossel bege · 4 slides · Domingo 30/11 · 10h30</div>
+
+    <!-- Slide 1 -->
+    <div class="slide-section">
+      <h3>Slide 1 · Capa</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Sucessões · Responsabilidade do herdeiro</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título hero</div>
+        <div class="value" data-copy>Recebeu <em>herança com dívidas</em>?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Subtítulo italic</div>
+        <div class="value" data-copy>Nem sempre o herdeiro é obrigado a pagar.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Sucessões · Civil  ·  OAB/SC 25.954  ·  01 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-section">
+      <h3>Slide 2 · A regra</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>A regra geral</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Título</div>
+        <div class="value" data-copy>A responsabilidade do herdeiro é <em>limitada</em> ao valor dos bens recebidos.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>Art. 1.792 do Código Civil: o herdeiro não responde por dívidas que ultrapassem a herança. Se o passivo supera o ativo, ele não tira do próprio patrimônio para pagar.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Sucessões · Civil  ·  02 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-section">
+      <h3>Slide 3 · Os três caminhos</h3>
+      <div class="field">
+        <div class="label">Eyebrow</div>
+        <div class="value" data-copy>Os três caminhos</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Lista (3 itens)</div>
+        <div class="value" data-copy><em>Aceitar</em> pura e simples — recebe os bens e paga as dívidas até o limite do que recebe
+<em>Renunciar</em> à herança — abre mão de tudo, sem precisar pagar; a quota passa aos demais herdeiros
+<em>Aceitar com inventário</em> — recebe os bens e paga as dívidas pelo inventário, de forma ordenada</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Caption</div>
+        <div class="value" data-copy>A escolha depende do balanço ativo × passivo e do perfil familiar.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Footer</div>
+        <div class="value" data-copy>Sucessões · Civil  ·  03 / 04</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-section">
+      <h3>Slide 4 · CTA</h3>
+      <div class="field">
+        <div class="label">Pergunta italic</div>
+        <div class="value" data-copy>Herança com dívidas no caminho?</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Chamada</div>
+        <div class="value" data-copy>Fale com o escritório</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Handle @</div>
+        <div class="value" data-copy>@dilneiborgesadvocacia</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+      <div class="field">
+        <div class="label">Disclaimer</div>
+        <div class="value" data-copy>Conteúdo informativo. Para o seu caso específico, consulte um advogado.</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="slide-section">
+      <h3>Legenda (pronta para o Instagram)</h3>
+      <div class="field">
+        <div class="label">Texto completo</div>
+        <div class="value" data-copy>Recebeu ou está prestes a receber uma herança com dívidas? Antes de qualquer coisa, saiba: nem sempre o herdeiro é obrigado a pagar.
+
+A regra do Código Civil (art. 1.792) é clara: a responsabilidade do herdeiro é limitada ao valor dos bens recebidos. Se o passivo supera o ativo, o herdeiro NÃO tira do próprio patrimônio para pagar.
+
+E ainda existem três caminhos possíveis:
+
+→ Aceitar pura e simples: recebe os bens e paga as dívidas até o limite do que recebeu
+→ Renunciar à herança: abre mão de tudo, sem precisar pagar; a quota passa aos outros herdeiros
+→ Aceitar com inventário: recebe os bens e paga as dívidas por meio do inventário, de forma ordenada
+
+A escolha depende de analisar o balanço entre ativo e passivo e o perfil familiar. Muitas vezes uma renúncia estratégica protege o herdeiro; em outras, o inventário resolve bem.
+
+O que você NÃO deve fazer é agir por impulso, assumir dívidas que não precisariam ser suas ou perder bens que poderiam ser preservados.
+
+Está nessa situação? Fale com o escritório antes de qualquer decisão.
+
+#direito #advocacia #advogado #direitodassucessoes #heranca #inventario #dividasnaheranca #herdeiro #planejamentosucessorio #advogadosc #santacatarina #jaguaruna #dilneiborgesadvocacia #sucessoes</div>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(function(btn){
+  btn.addEventListener('click', async function(){
+    var valueEl = btn.parentElement.querySelector('[data-copy]');
+    if (!valueEl) return;
+    var html = valueEl.innerHTML;
+    var text = html.replace(/<em[^>]*>/gi, '*').replace(/<\/em>/gi, '*')
+                   .replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+    var tmp = document.createElement('div');
+    tmp.innerHTML = text;
+    text = tmp.textContent;
+
+    var original = btn.textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('ok');
+    } catch(e) {
+      var range = document.createRange();
+      range.selectNode(valueEl);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Selecionado';
+      btn.classList.add('ok');
+    }
+    setTimeout(function(){
+      btn.textContent = original;
+      btn.classList.remove('ok');
+    }, 1800);
+  });
+});
+</script>
